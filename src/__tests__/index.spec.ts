@@ -1,0 +1,3 @@
+test('defines init() & create()', () => {
+	//
+})
