@@ -1,4 +1,4 @@
-[index.md - v1.0.0-beta.1](../README.md) / [Exports](../modules.md) / Options
+[index.md - v1.0.0](../README.md) / [Exports](../modules.md) / Options
 
 # Interface: Options
 
@@ -26,7 +26,7 @@ vue3.0 app
 
 #### Defined in
 
-[index.ts:23](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L23)
+[index.ts:23](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L23)
 
 ---
 
@@ -38,7 +38,7 @@ children
 
 #### Defined in
 
-[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L15)
+[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L15)
 
 ---
 
@@ -50,7 +50,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:27](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L27)
+[index.ts:27](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L27)
 
 ---
 
@@ -60,7 +60,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L17)
+[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L17)
 
 ---
 
@@ -70,7 +70,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L18)
+[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L18)
 
 ---
 
@@ -80,7 +80,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:32](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L32)
+[index.ts:32](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L32)
 
 ---
 
@@ -90,7 +90,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L16)
+[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L16)
 
 ---
 
@@ -102,7 +102,7 @@ propsData
 
 #### Defined in
 
-[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L11)
+[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L11)
 
 ---
 
@@ -112,4 +112,4 @@ propsData
 
 #### Defined in
 
-[index.ts:19](https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L19)
+[index.ts:19](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L19)
