@@ -1,0 +1,875 @@
+{
+	"id": 0,
+	"name": "index.md - v1.0.0-beta.1",
+	"kind": 1,
+	"kindString": "Project",
+	"flags": {},
+	"originalName": "index.md",
+	"children": [
+		{
+			"id": 18,
+			"name": "default",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {},
+			"children": [
+				{
+					"id": 19,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 40,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L40"
+						}
+					],
+					"signatures": [
+						{
+							"id": 20,
+							"name": "new default",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 21,
+									"name": "component",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "VNodeTypes",
+												"qualifiedName": "VNodeTypes",
+												"package": "@vue/runtime-core"
+											},
+											{
+												"type": "reference",
+												"name": "ClassComponent",
+												"qualifiedName": "ClassComponent",
+												"package": "@vue/runtime-core"
+											},
+											{
+												"type": "query",
+												"queryType": {
+													"type": "reference",
+													"name": "NULL_DYNAMIC_COMPONENT",
+													"qualifiedName": "NULL_DYNAMIC_COMPONENT",
+													"package": "@vue/runtime-core"
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 22,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"id": 4,
+										"name": "Options"
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 18,
+								"name": "Mount"
+							}
+						}
+					]
+				},
+				{
+					"id": 25,
+					"name": "options",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 38,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L38"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 4,
+						"name": "Options"
+					},
+					"defaultValue": "{}"
+				},
+				{
+					"id": 26,
+					"name": "seed",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 39,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L39"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "1"
+				},
+				{
+					"id": 24,
+					"name": "target",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 37,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L37"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"name": "Element",
+								"qualifiedName": "Element",
+								"package": "typescript"
+							},
+							{
+								"type": "reference",
+								"name": "ShadowRoot",
+								"qualifiedName": "ShadowRoot",
+								"package": "typescript"
+							}
+						]
+					}
+				},
+				{
+					"id": 23,
+					"name": "vNode",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 36,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L36"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					},
+					"defaultValue": "null"
+				},
+				{
+					"id": 27,
+					"name": "createVM",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 47,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L47"
+						}
+					],
+					"signatures": [
+						{
+							"id": 28,
+							"name": "createVM",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 29,
+									"name": "component",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "VNodeTypes",
+												"qualifiedName": "VNodeTypes",
+												"package": "@vue/runtime-core"
+											},
+											{
+												"type": "reference",
+												"name": "ClassComponent",
+												"qualifiedName": "ClassComponent",
+												"package": "@vue/runtime-core"
+											},
+											{
+												"type": "query",
+												"queryType": {
+													"type": "reference",
+													"name": "NULL_DYNAMIC_COMPONENT",
+													"qualifiedName": "NULL_DYNAMIC_COMPONENT",
+													"package": "@vue/runtime-core"
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 30,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"id": 4,
+										"name": "Options"
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					]
+				},
+				{
+					"id": 33,
+					"name": "destroy",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 89,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L89"
+						}
+					],
+					"signatures": [
+						{
+							"id": 34,
+							"name": "destroy",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": "mount",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 78,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L78"
+						}
+					],
+					"signatures": [
+						{
+							"id": 32,
+							"name": "mount",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						19
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						25,
+						26,
+						24,
+						23
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						27,
+						33,
+						31
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 35,
+					"character": 6,
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L35"
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "Options",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {},
+			"children": [
+				{
+					"id": 11,
+					"name": "app",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "vue3.0 app"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 23,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L23"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "any"
+							}
+						],
+						"name": "App",
+						"qualifiedName": "App",
+						"package": "@vue/runtime-core"
+					}
+				},
+				{
+					"id": 6,
+					"name": "children",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "children"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 15,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L15"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "unknown"
+					}
+				},
+				{
+					"id": 12,
+					"name": "context",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "vue2.0 context"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 27,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L27"
+						}
+					],
+					"type": {
+						"type": "intersection",
+						"types": [
+							{
+								"type": "reference",
+								"id": 3,
+								"name": "Data"
+							},
+							{
+								"type": "reflection",
+								"declaration": {
+									"id": 13,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 16,
+											"name": "i18n",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "index.ts",
+													"line": 30,
+													"character": 2,
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L30"
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										},
+										{
+											"id": 14,
+											"name": "router",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "index.ts",
+													"line": 28,
+													"character": 2,
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L28"
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										},
+										{
+											"id": 15,
+											"name": "store",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "index.ts",
+													"line": 29,
+													"character": 2,
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L29"
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Properties",
+											"children": [
+												16,
+												14,
+												15
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 27,
+											"character": 18,
+											"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L27"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": 8,
+					"name": "dynamicProps",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 17,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L17"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": null
+							},
+							{
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": 9,
+					"name": "isBlockNode",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 18,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L18"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 17,
+					"name": "parent",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 32,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L32"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "unknown"
+					}
+				},
+				{
+					"id": 7,
+					"name": "patchFlag",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 16,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L16"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					}
+				},
+				{
+					"id": 5,
+					"name": "props",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "propsData"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 11,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L11"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": null
+							},
+							{
+								"type": "intersection",
+								"types": [
+									{
+										"type": "reference",
+										"id": 3,
+										"name": "Data"
+									},
+									{
+										"type": "reference",
+										"name": "VNodeProps",
+										"qualifiedName": "VNodeProps",
+										"package": "@vue/runtime-core"
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"id": 10,
+					"name": "target",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 19,
+							"character": 1,
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L19"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"name": "Element",
+								"qualifiedName": "Element",
+								"package": "typescript"
+							},
+							{
+								"type": "reference",
+								"name": "ShadowRoot",
+								"qualifiedName": "ShadowRoot",
+								"package": "typescript"
+							}
+						]
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						11,
+						6,
+						12,
+						8,
+						9,
+						17,
+						7,
+						5,
+						10
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 7,
+					"character": 17,
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L7"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "Component",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 5,
+					"character": 12,
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L5"
+				}
+			],
+			"type": {
+				"type": "indexedAccess",
+				"indexType": {
+					"type": "literal",
+					"value": "0"
+				},
+				"objectType": {
+					"type": "reference",
+					"id": 1,
+					"name": "CreateVNodeParameters"
+				}
+			}
+		},
+		{
+			"id": 1,
+			"name": "CreateVNodeParameters",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 4,
+					"character": 12,
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L4"
+				}
+			],
+			"type": {
+				"type": "reference",
+				"typeArguments": [
+					{
+						"type": "query",
+						"queryType": {
+							"type": "reference",
+							"name": "createVNode",
+							"qualifiedName": "createVNode",
+							"package": "@vue/runtime-core"
+						}
+					}
+				],
+				"name": "Parameters",
+				"qualifiedName": "Parameters",
+				"package": "typescript"
+			}
+		},
+		{
+			"id": 3,
+			"name": "Data",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 6,
+					"character": 12,
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L6"
+				}
+			],
+			"type": {
+				"type": "reference",
+				"typeArguments": [
+					{
+						"type": "intrinsic",
+						"name": "string"
+					},
+					{
+						"type": "intrinsic",
+						"name": "unknown"
+					}
+				],
+				"name": "Record",
+				"qualifiedName": "Record",
+				"package": "typescript"
+			}
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"children": [
+				18
+			]
+		},
+		{
+			"title": "Interfaces",
+			"children": [
+				4
+			]
+		},
+		{
+			"title": "Type Aliases",
+			"children": [
+				2,
+				1,
+				3
+			]
+		}
+	],
+	"sources": [
+		{
+			"fileName": "index.ts",
+			"line": 1,
+			"character": 0,
+			"url": "https://github.com/saqqdy/vue-mount-plugin/blob/88c52c9/src/index.ts#L1"
+		}
+	]
+}

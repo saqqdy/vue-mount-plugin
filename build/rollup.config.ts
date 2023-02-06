@@ -41,7 +41,7 @@ const options: RollupOptions = {
 				outDir: undefined,
 				declaration: false,
 				declarationDir: undefined,
-				target: 'es5'
+				target: 'es6'
 			}
 		}),
 		babel({
