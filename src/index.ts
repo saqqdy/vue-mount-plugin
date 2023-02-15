@@ -16,7 +16,14 @@ export interface Options {
 	patchFlag?: number
 	dynamicProps?: string[] | null
 	isBlockNode?: boolean
+	/**
+	 * mount target
+	 */
 	target?: Element | ShadowRoot
+	/**
+	 * tagName of mount target, default: div
+	 */
+	tagName?: keyof HTMLElementTagNameMap
 	/**
 	 * vue3.0 app
 	 */
@@ -29,6 +36,9 @@ export interface Options {
 		store: unknown
 		i18n: unknown
 	}
+	/**
+	 * parent context
+	 */
 	parent?: unknown
 }
 
@@ -40,7 +50,10 @@ class Mount {
 	constructor(component: Component, options: Options = {}) {
 		if (typeof document === 'undefined') throw new Error('This plugin works in browser')
 		this.options = options
-		this.target = options.target || document.createElement('div')
+		this.target =
+			(typeof options.target === 'string'
+				? document.querySelector(options.target)
+				: options.target) || document.createElement(options.tagName || 'div')
 		this.vNode = this.createVM(component, options)
 	}
 
@@ -64,7 +77,7 @@ class Mount {
 				parent,
 				propsData: props
 			})
-			vNode.id = 'captcha' + this.seed++
+			vNode.id = 'mount-plugin-' + this.seed++
 			return vNode
 		} else {
 			vNode = createVNode(component, props, children, patchFlag, dynamicProps, isBlockNode)

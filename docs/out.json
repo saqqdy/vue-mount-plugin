@@ -319,26 +319,15 @@
 			"groups": [
 				{
 					"title": "Constructors",
-					"children": [
-						19
-					]
+					"children": [19]
 				},
 				{
 					"title": "Properties",
-					"children": [
-						25,
-						26,
-						24,
-						23
-					]
+					"children": [25, 26, 24, 23]
 				},
 				{
 					"title": "Methods",
-					"children": [
-						27,
-						33,
-						31
-					]
+					"children": [27, 33, 31]
 				}
 			],
 			"sources": [
@@ -525,11 +514,7 @@
 									"groups": [
 										{
 											"title": "Properties",
-											"children": [
-												16,
-												14,
-												15
-											]
+											"children": [16, 14, 15]
 										}
 									],
 									"sources": [
@@ -729,17 +714,7 @@
 			"groups": [
 				{
 					"title": "Properties",
-					"children": [
-						11,
-						6,
-						12,
-						8,
-						9,
-						17,
-						7,
-						5,
-						10
-					]
+					"children": [11, 6, 12, 8, 9, 17, 7, 5, 10]
 				}
 			],
 			"sources": [
@@ -845,23 +820,15 @@
 	"groups": [
 		{
 			"title": "Classes",
-			"children": [
-				18
-			]
+			"children": [18]
 		},
 		{
 			"title": "Interfaces",
-			"children": [
-				4
-			]
+			"children": [4]
 		},
 		{
 			"title": "Type Aliases",
-			"children": [
-				2,
-				1,
-				3
-			]
+			"children": [2, 1, 3]
 		}
 	],
 	"sources": [

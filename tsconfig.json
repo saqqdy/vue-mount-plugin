@@ -25,7 +25,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"#lib/*": ["./src/*"],
-			"@/package": ["./package.json"],
+			"@/package": ["./package.json"]
 		}
 	},
 	"exclude": ["**/__tests__", "temp"]
