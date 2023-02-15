@@ -27,7 +27,7 @@ vue3.0 app
 
 #### Defined in
 
-[index.ts:30](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L30)
+[index.ts:30](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L30)
 
 ---
 
@@ -39,7 +39,7 @@ children
 
 #### Defined in
 
-[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L15)
+[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L15)
 
 ---
 
@@ -51,7 +51,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:34](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L34)
+[index.ts:34](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L34)
 
 ---
 
@@ -61,7 +61,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L17)
+[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L17)
 
 ---
 
@@ -71,7 +71,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L18)
+[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L18)
 
 ---
 
@@ -83,7 +83,7 @@ parent context
 
 #### Defined in
 
-[index.ts:42](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L42)
+[index.ts:42](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L42)
 
 ---
 
@@ -93,7 +93,7 @@ parent context
 
 #### Defined in
 
-[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L16)
+[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L16)
 
 ---
 
@@ -105,7 +105,7 @@ propsData
 
 #### Defined in
 
-[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L11)
+[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L11)
 
 ---
 
@@ -117,7 +117,7 @@ tagName of mount target, default: div
 
 #### Defined in
 
-[index.ts:26](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L26)
+[index.ts:26](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L26)
 
 ---
 
@@ -129,4 +129,4 @@ mount target
 
 #### Defined in
 
-[index.ts:22](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L22)
+[index.ts:22](https://github.com/saqqdy/vue-mount-plugin/blob/84b999b/src/index.ts#L22)
