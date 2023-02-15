@@ -1,4 +1,4 @@
-[index.md - v1.0.0](../README.md) / [Exports](../modules.md) / default
+[index.md - v1.1.0](../README.md) / [Exports](../modules.md) / default
 
 # Class: default
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[index.ts:40](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L40)
+[index.ts:50](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L50)
 
 ## Properties
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[index.ts:38](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L38)
+[index.ts:48](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L48)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[index.ts:39](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L39)
+[index.ts:49](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L49)
 
 ---
 
@@ -66,7 +66,7 @@
 
 #### Defined in
 
-[index.ts:37](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L37)
+[index.ts:47](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L47)
 
 ---
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[index.ts:36](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L36)
+[index.ts:46](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L46)
 
 ## Methods
 
@@ -97,7 +97,7 @@
 
 #### Defined in
 
-[index.ts:47](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L47)
+[index.ts:60](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L60)
 
 ---
 
@@ -111,7 +111,7 @@
 
 #### Defined in
 
-[index.ts:89](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L89)
+[index.ts:102](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L102)
 
 ---
 
@@ -125,4 +125,4 @@
 
 #### Defined in
 
-[index.ts:78](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L78)
+[index.ts:91](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L91)

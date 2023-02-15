@@ -1,4 +1,4 @@
-[index.md - v1.0.0](../README.md) / [Exports](../modules.md) / Options
+[index.md - v1.1.0](../README.md) / [Exports](../modules.md) / Options
 
 # Interface: Options
 
@@ -14,6 +14,7 @@
 - [parent](Options.md#parent)
 - [patchFlag](Options.md#patchflag)
 - [props](Options.md#props)
+- [tagName](Options.md#tagname)
 - [target](Options.md#target)
 
 ## Properties
@@ -26,7 +27,7 @@ vue3.0 app
 
 #### Defined in
 
-[index.ts:23](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L23)
+[index.ts:30](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L30)
 
 ---
 
@@ -38,7 +39,7 @@ children
 
 #### Defined in
 
-[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L15)
+[index.ts:15](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L15)
 
 ---
 
@@ -50,7 +51,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:27](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L27)
+[index.ts:34](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L34)
 
 ---
 
@@ -60,7 +61,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L17)
+[index.ts:17](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L17)
 
 ---
 
@@ -70,7 +71,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L18)
+[index.ts:18](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L18)
 
 ---
 
@@ -78,9 +79,11 @@ vue2.0 context
 
 • `Optional` **parent**: `unknown`
 
+parent context
+
 #### Defined in
 
-[index.ts:32](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L32)
+[index.ts:42](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L42)
 
 ---
 
@@ -90,7 +93,7 @@ vue2.0 context
 
 #### Defined in
 
-[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L16)
+[index.ts:16](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L16)
 
 ---
 
@@ -102,7 +105,19 @@ propsData
 
 #### Defined in
 
-[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L11)
+[index.ts:11](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L11)
+
+---
+
+### tagName
+
+• `Optional` **tagName**: keyof `HTMLElementTagNameMap`
+
+tagName of mount target, default: div
+
+#### Defined in
+
+[index.ts:26](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L26)
 
 ---
 
@@ -110,6 +125,8 @@ propsData
 
 • `Optional` **target**: `Element` \| `ShadowRoot`
 
+mount target
+
 #### Defined in
 
-[index.ts:19](https://github.com/saqqdy/vue-mount-plugin/blob/86c8f88/src/index.ts#L19)
+[index.ts:22](https://github.com/saqqdy/vue-mount-plugin/blob/0010a8f/src/index.ts#L22)
