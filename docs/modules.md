@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[index.ts:5](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L5)
+[index.ts:5](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L5)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[index.ts:4](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L4)
+[index.ts:4](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L4)
 
 ---
 
@@ -46,4 +46,4 @@
 
 #### Defined in
 
-[index.ts:6](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L6)
+[index.ts:6](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L6)

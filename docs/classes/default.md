@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[index.ts:50](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L50)
+[index.ts:50](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L50)
 
 ## Properties
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[index.ts:48](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L48)
+[index.ts:48](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L48)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[index.ts:49](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L49)
+[index.ts:49](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L49)
 
 ---
 
@@ -66,7 +66,7 @@
 
 #### Defined in
 
-[index.ts:47](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L47)
+[index.ts:47](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L47)
 
 ---
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[index.ts:46](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L46)
+[index.ts:46](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L46)
 
 ## Methods
 
@@ -97,7 +97,7 @@
 
 #### Defined in
 
-[index.ts:60](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L60)
+[index.ts:60](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L60)
 
 ---
 
@@ -111,7 +111,7 @@
 
 #### Defined in
 
-[index.ts:91](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L91)
+[index.ts:91](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L91)
 
 ---
 
@@ -125,4 +125,4 @@
 
 #### Defined in
 
-[index.ts:102](https://github.com/saqqdy/vue-mount-plugin/blob/ee987f9/src/index.ts#L102)
+[index.ts:102](https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L102)
