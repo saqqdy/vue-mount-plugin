@@ -18,7 +18,7 @@ export const banner =
 	'\n' +
 	' * (c) 2021-' +
 	new Date().getFullYear() +
-	' saqqdy \n' +
+	' saqqdy <saqqdy@qq.com> \n' +
 	' * Released under the MIT License.\n' +
 	' */'
 
@@ -31,7 +31,7 @@ export const bannerText =
 	'\n' +
 	'(c) 2021-' +
 	new Date().getFullYear() +
-	' saqqdy \n' +
+	' saqqdy <saqqdy@qq.com> \n' +
 	'Released under the MIT License.'
 
 export const externals = {}

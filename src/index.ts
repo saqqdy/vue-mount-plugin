@@ -98,8 +98,8 @@ class Mount {
 		}
 	}
 
-	// destroy
-	destroy() {
+	// unmount
+	unmount() {
 		if (isVue2) {
 			this.vNode.$destroy()
 			document.body.removeChild(this.vNode.$el)
