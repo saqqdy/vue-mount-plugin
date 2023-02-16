@@ -22,6 +22,7 @@ exclude_paths:
   - '**.min.js'
   - '**/tests/**'
   - 'docs/**'
+  - 'dist/**'
   - 'lib/**'
   - 'es/**'
   - 'scripts/**'

@@ -1,4 +1,4 @@
-index.md - v1.1.0 / [Exports](modules.md)
+index.md - v2.0.0 / [Exports](modules.md)
 
 <div style="text-align: center;" align="center">
 
@@ -10,6 +10,7 @@ A simple and easy to use vue instance extension plugin that supports vue2.0 and 
 [![Codacy Badge][codacy-image]][codacy-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
+[![gzip][gzip-image]][gzip-url]
 [![License][license-image]][license-url]
 
 [![Sonar][sonar-image]][sonar-url]
@@ -40,10 +41,7 @@ $ yarn add vue-mount-plugin
 ### Use in Vue `>=3.0`
 
 ```vue
-<template>
-  <div></div>
-</template>
-
+<!-- test.vue -->
 <script setup>
 import { getCurrentInstance } from 'vue'
 import Mount from 'vue-mount-plugin'
@@ -55,18 +53,15 @@ const instance = new Mount(DemoVue, { parent: proxy.$root })
 // mount to the end of document.body
 instance.mount()
 
-// destroy
-instance.destroy()
+// unmount
+instance.unmount()
 </script>
 ```
 
 ### Use in Vue `2.7`
 
 ```vue
-<template>
-  <div></div>
-</template>
-
+<!-- test.vue -->
 <script>
 import { getCurrentInstance } from 'vue'
 import Mount from 'vue-mount-plugin'
@@ -80,8 +75,8 @@ export default {
     // mount to the end of document.body
     instance.mount()
 
-    // destroy
-    instance.destroy()
+    // unmount
+    instance.unmount()
   }
 }
 </script>
@@ -100,10 +95,7 @@ export default {
 ```
 
 ```vue
-<template>
-  <div></div>
-</template>
-
+<!-- test.vue -->
 <script>
 import { getCurrentInstance } from '@vue/composition-api'
 import Mount from 'vue-mount-plugin'
@@ -117,8 +109,44 @@ export default {
     // mount to the end of document.body
     instance.mount()
 
-    // destroy
-    instance.destroy()
+    // unmount
+    instance.unmount()
+  }
+}
+</script>
+```
+
+### Import in Browser
+
+Import `vue-mount-plugin` through browser HTML tags directly, and use global variable VueMount.
+
+```html
+<head>
+  <!-- Import vue3 or vue2 -->
+  <script src="//unpkg.com/vue@3"></script>
+  <!-- Import vue-demi library -->
+  <script src="//unpkg.com/vue-demi"></script>
+  <!-- Import vue-mount-plugin library -->
+  <script src="//unpkg.com/vue-mount-plugin"></script>
+</head>
+```
+
+```vue
+<!-- test.vue -->
+<script>
+import { getCurrentInstance } from '@vue/composition-api'
+import DemoVue from './demo.vue'
+
+export default {
+  setup() {
+    const { proxy } = getCurrentInstance()
+    const instance = new VueMount(DemoVue, { parent: proxy.$root })
+
+    // mount to the end of document.body
+    instance.mount()
+
+    // unmount
+    instance.unmount()
   }
 }
 </script>
@@ -140,6 +168,8 @@ Please open an issue [here](https://github.com/saqqdy/vue-mount-plugin/issues).
 [codecov-url]: https://codecov.io/github/saqqdy/vue-mount-plugin?branch=master
 [download-image]: https://img.shields.io/npm/dm/vue-mount-plugin.svg?style=flat-square
 [download-url]: https://npmjs.org/package/vue-mount-plugin
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.iife.min.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.iife.min.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_vue-mount-plugin
