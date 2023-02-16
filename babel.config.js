@@ -8,7 +8,7 @@ module.exports = {
 				useBuiltIns: 'usage',
 				targets: {
 					// node: '16',
-					browsers: ['> 1%', 'not ie 11', 'not op_mini all']
+					browsers: ['> 0.1%', 'last 2 versions', 'not ie < 11']
 				},
 				corejs: 3
 			}
