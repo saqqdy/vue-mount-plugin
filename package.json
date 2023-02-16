@@ -1,15 +1,19 @@
 {
 	"name": "vue-mount-plugin",
 	"description": "A simple and easy to use vue instance extension plugin that supports vue2.0 and vue3.0",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"packageManager": "pnpm@7.26.1",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",
 	"typings": "./dist/index.d.ts",
+	"unpkg": "./dist/index.iife.min.js",
+	"jsdelivr": "./dist/index.iife.min.js",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"require": "./dist/index.cjs",
-			"import": "./dist/index.mjs"
+			"import": "./dist/index.mjs",
+			"browser": "./dist/index.mjs"
 		},
 		"./*": "./*"
 	},
@@ -60,6 +64,7 @@
 		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-commonjs": "^24.0.1",
 		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-terser": "^0.4.0",
 		"@rollup/plugin-typescript": "^11.0.0",
 		"@types/jest": "^29.4.0",
 		"@types/node": "^18.13.0",
@@ -98,6 +103,9 @@
 			"optional": true
 		}
 	},
+	"engines": {
+		"node": ">=12"
+	},
 	"pnpm": {
 		"peerDependencyRules": {
 			"ignoreMissing": [
@@ -129,6 +137,7 @@
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/vue-mount-plugin.git"
 	},
+	"funding": "https://github.com/sponsors/saqqdy",
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",
 		"access": "public"

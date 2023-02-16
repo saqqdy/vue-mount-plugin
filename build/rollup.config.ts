@@ -2,6 +2,7 @@ import type { RollupOptions } from 'rollup'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
+import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import alias, { type ResolverObject } from '@rollup/plugin-alias'
 import filesize from 'rollup-plugin-filesize'
@@ -20,6 +21,10 @@ const nodeResolver = nodeResolve({
 	exportConditions: ['node'],
 	moduleDirectories: ['node_modules']
 })
+const iifeGlobals = {
+	vue: 'Vue',
+	'vue-demi': 'VueDemi'
+}
 
 const options: RollupOptions = {
 	plugins: [
@@ -73,6 +78,23 @@ export default [
 				exports: 'auto',
 				format: 'es',
 				banner
+			},
+			{
+				file: `dist/index.iife.js`,
+				format: 'iife',
+				name: 'VueMount',
+				extend: true,
+				globals: iifeGlobals,
+				banner
+			},
+			{
+				file: pkg.unpkg,
+				format: 'iife',
+				name: 'VueMount',
+				extend: true,
+				globals: iifeGlobals,
+				banner,
+				plugins: [terser()]
 			}
 		],
 		...options
