@@ -1,5 +1,11 @@
 # Change logs
 
+## 2023.02.16 v2.0.0
+
+1. Built-in `destroy` method changed to `unmount`
+2. Downgrade to adapt to `ie11`
+3. Build output `iife` lib
+
 ## 2023.02.15 v1.1.0
 
 1. Add support for customized tagName
