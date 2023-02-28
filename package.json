@@ -81,7 +81,7 @@
 		"reinstaller": "^2.3.0",
 		"rimraf": "^4.1.2",
 		"rollup": "^3.15.0",
-		"rollup-plugin-filesize": "^9.1.2",
+		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-visualizer": "^5.9.0",
 		"ts-jest": "^29.0.5",
 		"tsnd": "^1.1.0",
