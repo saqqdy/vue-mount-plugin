@@ -1,6 +1,6 @@
-[index.md - v2.0.0](README.md) / Exports
+[index.md - v2.1.0](README.md) / Exports
 
-# index.md - v2.0.0
+# index.md - v2.1.0
 
 ## Table of contents
 
@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[index.ts:5](https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L5)
+[index.ts:5](https://github.com/saqqdy/vue-mount-plugin/blob/4e7d820/src/index.ts#L5)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[index.ts:4](https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L4)
+[index.ts:4](https://github.com/saqqdy/vue-mount-plugin/blob/4e7d820/src/index.ts#L4)
 
 ---
 
@@ -46,4 +46,4 @@
 
 #### Defined in
 
-[index.ts:6](https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L6)
+[index.ts:6](https://github.com/saqqdy/vue-mount-plugin/blob/4e7d820/src/index.ts#L6)
