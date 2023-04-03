@@ -24,7 +24,7 @@
 							"fileName": "index.ts",
 							"line": 50,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L50"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L50"
 						}
 					],
 					"signatures": [
@@ -101,7 +101,7 @@
 							"fileName": "index.ts",
 							"line": 48,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L48"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L48"
 						}
 					],
 					"type": {
@@ -122,7 +122,7 @@
 							"fileName": "index.ts",
 							"line": 49,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L49"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L49"
 						}
 					],
 					"type": {
@@ -142,7 +142,7 @@
 							"fileName": "index.ts",
 							"line": 47,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L47"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L47"
 						}
 					],
 					"type": {
@@ -174,7 +174,7 @@
 							"fileName": "index.ts",
 							"line": 46,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L46"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L46"
 						}
 					],
 					"type": {
@@ -194,7 +194,7 @@
 							"fileName": "index.ts",
 							"line": 60,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L60"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L60"
 						}
 					],
 					"signatures": [
@@ -270,7 +270,7 @@
 							"fileName": "index.ts",
 							"line": 91,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L91"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L91"
 						}
 					],
 					"signatures": [
@@ -298,7 +298,7 @@
 							"fileName": "index.ts",
 							"line": 102,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L102"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L102"
 						}
 					],
 					"signatures": [
@@ -346,7 +346,7 @@
 					"fileName": "index.ts",
 					"line": 45,
 					"character": 6,
-					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L45"
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L45"
 				}
 			]
 		},
@@ -378,7 +378,7 @@
 							"fileName": "index.ts",
 							"line": 30,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L30"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L30"
 						}
 					],
 					"type": {
@@ -415,7 +415,7 @@
 							"fileName": "index.ts",
 							"line": 15,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L15"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L15"
 						}
 					],
 					"type": {
@@ -444,7 +444,7 @@
 							"fileName": "index.ts",
 							"line": 34,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L34"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L34"
 						}
 					],
 					"type": {
@@ -475,7 +475,7 @@
 													"fileName": "index.ts",
 													"line": 37,
 													"character": 2,
-													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L37"
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L37"
 												}
 											],
 											"type": {
@@ -494,7 +494,7 @@
 													"fileName": "index.ts",
 													"line": 35,
 													"character": 2,
-													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L35"
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L35"
 												}
 											],
 											"type": {
@@ -513,7 +513,7 @@
 													"fileName": "index.ts",
 													"line": 36,
 													"character": 2,
-													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L36"
+													"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L36"
 												}
 											],
 											"type": {
@@ -537,7 +537,7 @@
 											"fileName": "index.ts",
 											"line": 34,
 											"character": 18,
-											"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L34"
+											"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L34"
 										}
 									]
 								}
@@ -558,7 +558,7 @@
 							"fileName": "index.ts",
 							"line": 17,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L17"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L17"
 						}
 					],
 					"type": {
@@ -591,7 +591,7 @@
 							"fileName": "index.ts",
 							"line": 18,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L18"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L18"
 						}
 					],
 					"type": {
@@ -620,7 +620,7 @@
 							"fileName": "index.ts",
 							"line": 42,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L42"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L42"
 						}
 					],
 					"type": {
@@ -641,7 +641,7 @@
 							"fileName": "index.ts",
 							"line": 16,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L16"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L16"
 						}
 					],
 					"type": {
@@ -670,7 +670,7 @@
 							"fileName": "index.ts",
 							"line": 11,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L11"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L11"
 						}
 					],
 					"type": {
@@ -720,7 +720,7 @@
 							"fileName": "index.ts",
 							"line": 26,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L26"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L26"
 						}
 					],
 					"type": {
@@ -755,7 +755,7 @@
 							"fileName": "index.ts",
 							"line": 22,
 							"character": 1,
-							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L22"
+							"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L22"
 						}
 					],
 					"type": {
@@ -799,7 +799,7 @@
 					"fileName": "index.ts",
 					"line": 7,
 					"character": 17,
-					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L7"
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L7"
 				}
 			]
 		},
@@ -814,7 +814,7 @@
 					"fileName": "index.ts",
 					"line": 5,
 					"character": 12,
-					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L5"
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L5"
 				}
 			],
 			"type": {
@@ -841,7 +841,7 @@
 					"fileName": "index.ts",
 					"line": 4,
 					"character": 12,
-					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L4"
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L4"
 				}
 			],
 			"type": {
@@ -873,7 +873,7 @@
 					"fileName": "index.ts",
 					"line": 6,
 					"character": 12,
-					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L6"
+					"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L6"
 				}
 			],
 			"type": {
@@ -921,7 +921,7 @@
 			"fileName": "index.ts",
 			"line": 1,
 			"character": 0,
-			"url": "https://github.com/saqqdy/vue-mount-plugin/blob/d21b85b/src/index.ts#L1"
+			"url": "https://github.com/saqqdy/vue-mount-plugin/blob/7535845/src/index.ts#L1"
 		}
 	]
 }

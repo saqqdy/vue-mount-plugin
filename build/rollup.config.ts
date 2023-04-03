@@ -1,18 +1,18 @@
+import { sep } from 'node:path'
 import type { RollupOptions } from 'rollup'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
+import cleanup from 'rollup-plugin-cleanup'
 import typescript from '@rollup/plugin-typescript'
 import alias, { type ResolverObject } from '@rollup/plugin-alias'
 import filesize from 'rollup-plugin-filesize'
+import { visualizer } from 'rollup-plugin-visualizer'
 import pkg from '../package.json' assert { type: 'json' }
 import { banner, extensions, reporter } from './config'
 
-const externals = [
-	...Object.keys(pkg.dependencies || {}),
-	...Object.keys(pkg.devDependencies || {})
-]
+const externals = [...Object.keys(pkg.dependencies || {})]
 const nodeResolver = nodeResolve({
 	// Use the `package.json` "browser" field
 	browser: false,
@@ -39,48 +39,63 @@ const options: RollupOptions = {
 		}),
 		nodeResolver,
 		commonjs({
-			sourceMap: false
-		}),
-		typescript({
-			compilerOptions: {
-				outDir: undefined,
-				declaration: false,
-				declarationDir: undefined,
-				target: 'es6'
-			}
+			sourceMap: false,
+			exclude: ['core-js']
 		}),
 		babel({
 			babelHelpers: 'bundled',
 			extensions,
 			exclude: ['node_modules']
 		}),
-		filesize({ reporter })
-	],
-	external(id) {
-		return ['core-js', 'js-cool', 'regenerator-runtime', '@babel/runtime']
-			.concat(externals)
-			.some(k => new RegExp('^' + k).test(id))
-	}
+		typescript({
+			compilerOptions: {
+				outDir: undefined,
+				declaration: false,
+				declarationDir: undefined,
+				target: 'es5'
+			}
+		}),
+		filesize({ reporter }),
+		visualizer()
+	]
 }
+
+function externalCjsEsm(id: string) {
+	return ['vue', 'vue2', 'vue-demi', 'core-js', '@babel/runtime']
+		.concat(externals)
+		.some(k => new RegExp('^' + k).test(id))
+}
+
+function externalUmd(id: string) {
+	return ['vue', 'vue2', 'vue-demi'].some(k => id === k || new RegExp('^' + k + sep).test(id))
+}
+
+const distDir = (path: string) =>
+	process.env.BABEL_ENV === 'es5' ? path.replace('index', 'es5/index') : path
 
 export default [
 	{
 		input: 'src/index.ts',
 		output: [
 			{
-				file: pkg.main,
+				file: distDir(pkg.main),
 				exports: 'auto',
-				format: 'cjs',
-				banner
+				format: 'cjs'
 			},
 			{
-				file: pkg.module,
+				file: distDir(pkg.module),
 				exports: 'auto',
-				format: 'es',
-				banner
-			},
+				format: 'es'
+			}
+		],
+		external: externalCjsEsm,
+		...options
+	},
+	{
+		input: distDir('dist/index.mjs'),
+		output: [
 			{
-				file: `dist/index.iife.js`,
+				file: distDir('dist/index.iife.js'),
 				format: 'iife',
 				name: 'VueMount',
 				extend: true,
@@ -88,7 +103,7 @@ export default [
 				banner
 			},
 			{
-				file: pkg.unpkg,
+				file: distDir(pkg.unpkg),
 				format: 'iife',
 				name: 'VueMount',
 				extend: true,
@@ -97,6 +112,18 @@ export default [
 				plugins: [terser()]
 			}
 		],
-		...options
+		external: externalUmd,
+		plugins: [
+			nodeResolver,
+			commonjs({
+				sourceMap: false,
+				exclude: ['core-js']
+			}),
+			cleanup({
+				comments: 'all'
+			}),
+			filesize({ reporter }),
+			visualizer()
+		]
 	}
 ]

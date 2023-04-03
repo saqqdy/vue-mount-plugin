@@ -1,5 +1,12 @@
 # Change logs
 
+## 2023.04.03 v2.1.0
+
+1. remove un-need banner
+2. fix export types
+3. export es5 package
+4. upgrade all package version
+
 ## 2023.02.16 v2.0.0
 
 1. Built-in `destroy` method changed to `unmount`
