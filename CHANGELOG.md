@@ -1,5 +1,10 @@
 # Change logs
 
+## 2023.04.04 v2.1.1
+
+1. Optimized build script
+2. upgrade all package version
+
 ## 2023.04.03 v2.1.0
 
 1. remove un-need banner
