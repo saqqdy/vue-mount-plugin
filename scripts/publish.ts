@@ -15,17 +15,7 @@ else if (IS_TEST) {
 	process.exit(0)
 }
 
-// if (IS_TEST)
-// 	execSync('pnpm run workflow:publish-test --enable1', {
-// 		stdio: 'inherit'
-// 	})
-
 execSync(command, {
 	stdio: 'inherit'
 })
 console.info('Published vue-mount-plugin')
-
-// if (IS_TEST)
-// 	execSync('pnpm run workflow:publish-test', {
-// 		stdio: 'inherit'
-// 	})

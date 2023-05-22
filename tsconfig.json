@@ -14,7 +14,7 @@
 		"jsxFragmentFactory": "Fragment",
 		"noLib": false,
 		"target": "ESNext",
-		"sourceMap": true,
+		"sourceMap": false,
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,

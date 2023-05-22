@@ -1,5 +1,11 @@
 # Change logs
 
+## 2023.05.22 v3.0.0
+
+1. new outputs
+2. remove es5
+3. upgrade all package version
+
 ## 2023.04.04 v2.1.1
 
 1. Optimized build script

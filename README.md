@@ -17,7 +17,7 @@ A simple and easy to use vue instance extension plugin that supports vue2.0 and 
 
 <div style="text-align: center; margin-bottom: 20px;" align="center">
 
-## **For API documentation, see: [API Docs](./docs/modules.md)**
+### **[Documentation](https://www.saqqdy.com/vue-mount-plugin)** • **[Change Log](./CHANGELOG.md)**
 
 </div>
 
@@ -122,10 +122,8 @@ Import `vue-mount-plugin` through browser HTML tags directly, and use global var
 <head>
   <!-- Import vue3 or vue2 -->
   <script src="//unpkg.com/vue@3"></script>
-  <!-- Import vue-demi library -->
-  <script src="//unpkg.com/vue-demi"></script>
   <!-- Import vue-mount-plugin library -->
-  <script src="//unpkg.com/vue-mount-plugin"></script>
+  <script src="//unpkg.com/vue-mount-plugin@3.0.0/dist/index.global.prod.js"></script>
 </head>
 ```
 

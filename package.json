@@ -1,40 +1,38 @@
 {
 	"name": "vue-mount-plugin",
 	"description": "A simple and easy to use vue instance extension plugin that supports vue2.0 and vue3.0",
-	"version": "2.1.1",
-	"packageManager": "pnpm@7.26.1",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.mjs",
-	"unpkg": "./dist/index.iife.min.js",
-	"jsdelivr": "./dist/index.iife.min.js",
-	"types": "./dist/index.d.ts",
+	"version": "3.0.0",
+	"packageManager": "pnpm@8.5.1",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.esm-bundler.js",
+	"browser": "dist/index.esm-browser.js",
+	"unpkg": "dist/index.global.js",
+	"jsdelivr": "dist/index.global.js",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"require": "./dist/index.cjs",
-			"import": "./dist/index.mjs",
-			"browser": "./dist/index.mjs"
+			"module": "./dist/index.esm-bundler.js",
+			"require": "./dist/index.cjs.js",
+			"import": "./dist/index.mjs"
 		},
 		"./*": "./*"
 	},
 	"files": [
-		"dist",
-		"es",
-		"lib"
+		"dist"
 	],
 	"directories": {
 		"dist": "dist",
-		"es": "es",
-		"lib": "lib",
 		"src": "src"
 	},
 	"scripts": {
-		"build": "run-s clean build:{bundle,es5,types,docs} roll-types",
+		"build": "run-s clean build:{bundle,types}",
 		"build:bundle": "rollup -c build/rollup.config.ts --configPlugin @rollup/plugin-typescript",
 		"build:es5": "cross-env BABEL_ENV=es5 pnpm build:bundle",
-		"build:types": "tsc -p src/tsconfig.declaration.json",
+		"build:types": "tsc -p src/tsconfig.json && pnpm roll-types",
 		"build:docs": "rm-all docs && typedoc && prettier --write \"**/*.md\"",
-		"roll-types": "api-extractor run && rm-all temp && cp dist/index.d.ts dist/es5",
+		"deploy": "sh scripts/deploy.sh",
+		"roll-types": "api-extractor run && rm-all temp",
 		"watch": "pnpm build:bundle -w",
 		"pub": "tscjs scripts/publish",
 		"unpub": "tscjs scripts/unpublish",
@@ -51,52 +49,52 @@
 		"prettier": "prettier --write \"**/*.{js,ts,jsx,tsx,yml,json,md}\""
 	},
 	"dependencies": {
-		"core-js": "^3.29.1",
-		"js-cool": "^3.0.0-beta.6",
-		"vue-demi": "^0.13.11"
+		"js-cool": "^4.3.0",
+		"vue-demi": "^0.14.5"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.21.4",
-		"@babel/preset-env": "^7.21.4",
-		"@babel/preset-typescript": "^7.21.4",
-		"@eslint-sets/eslint-config-ts": "^5.1.0",
-		"@microsoft/api-extractor": "^7.34.4",
+		"@babel/core": "^7.21.8",
+		"@babel/preset-env": "^7.21.5",
+		"@babel/preset-typescript": "^7.21.5",
+		"@eslint-sets/eslint-config-ts": "^5.2.0",
+		"@microsoft/api-extractor": "^7.35.0",
 		"@rollup/plugin-alias": "^5.0.0",
 		"@rollup/plugin-babel": "^6.0.3",
-		"@rollup/plugin-commonjs": "^24.0.1",
-		"@rollup/plugin-node-resolve": "^15.0.1",
-		"@rollup/plugin-terser": "^0.4.0",
-		"@rollup/plugin-typescript": "^11.0.0",
-		"@types/jest": "^29.5.0",
-		"@types/node": "^18.15.11",
+		"@rollup/plugin-commonjs": "^25.0.0",
+		"@rollup/plugin-node-resolve": "^15.0.2",
+		"@rollup/plugin-terser": "^0.4.3",
+		"@rollup/plugin-typescript": "^11.1.1",
+		"@types/jest": "^29.5.1",
+		"@types/node": "^20.2.3",
 		"chalk": "^5.2.0",
+		"core-js": "^3.30.2",
 		"coveralls": "^3.1.1",
 		"cross-env": "^7.0.3",
-		"eslint": "^8.37.0",
+		"eslint": "^8.41.0",
 		"fast-glob": "^3.2.12",
 		"jest": "^29.5.0",
 		"load-yml": "^1.3.0",
 		"npm-run-all": "^4.1.5",
-		"prettier": "^2.8.7",
+		"prettier": "^2.8.8",
 		"prettier-config-common": "^1.4.0",
-		"reinstaller": "^2.3.0",
+		"reinstaller": "^3.0.0",
 		"rm-all": "^1.0.0",
-		"rollup": "^3.20.2",
+		"rollup": "^3.23.0",
 		"rollup-plugin-cleanup": "^3.2.1",
 		"rollup-plugin-filesize": "^10.0.0",
+		"rollup-plugin-inject-code": "^1.0.0",
 		"rollup-plugin-visualizer": "^5.9.0",
 		"ts-jest": "^29.1.0",
 		"tsnd": "^1.1.0",
-		"typedoc": "^0.24.1",
-		"typedoc-plugin-markdown": "^3.14.0",
-		"typescript": "^5.0.3",
-		"vue": "^3.2.47",
+		"typedoc": "^0.24.7",
+		"typedoc-plugin-markdown": "^3.15.3",
+		"typescript": "^5.0.4",
+		"vue": "^3.3.4",
 		"vue2": "npm:vue@^2.7.14",
-		"zx": "^7.2.1"
+		"zx": "^7.2.2"
 	},
 	"peerDependencies": {
 		"@vue/composition-api": ">=1.0.0",
-		"core-js": ">= 3",
 		"js-cool": ">= 2",
 		"vue": "^2.0.0 || >=3.0.0"
 	},
@@ -115,6 +113,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
+				"rollup": ">=3.20.0",
 				"eslint": "^8.0.0"
 			}
 		}
