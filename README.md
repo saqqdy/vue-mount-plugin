@@ -164,8 +164,8 @@ Please open an issue [here](https://github.com/saqqdy/vue-mount-plugin/issues).
 [codecov-url]: https://codecov.io/github/saqqdy/vue-mount-plugin?branch=master
 [download-image]: https://img.shields.io/npm/dm/vue-mount-plugin.svg?style=flat-square
 [download-url]: https://npmjs.org/package/vue-mount-plugin
-[gzip-image]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.iife.min.js?compression=gzip&label=gzip%20size:%20JS
-[gzip-url]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.iife.min.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/vue-mount-plugin/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_vue-mount-plugin
