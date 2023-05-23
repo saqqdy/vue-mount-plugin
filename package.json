@@ -1,7 +1,7 @@
 {
 	"name": "vue-mount-plugin",
 	"description": "A simple and easy to use vue instance extension plugin that supports vue2.0 and vue3.0",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"packageManager": "pnpm@8.5.1",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
