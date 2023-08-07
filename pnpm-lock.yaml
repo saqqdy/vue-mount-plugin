@@ -89,7 +89,7 @@ devDependencies:
     version: 3.0.0(debug@4.3.4)(js-cool@5.3.1)
   rm-all:
     specifier: ^1.0.0
-    version: 1.0.0(core-js@3.30.2)
+    version: 1.1.1(js-cool@5.3.1)
   rollup:
     specifier: ^3.23.0
     version: 3.26.2
@@ -1888,6 +1888,11 @@ packages:
     resolution: {integrity: sha512-cj0gMQ+yE4jNmCrtz1TEXYMX+zNOJEGxGy1YzG2IBek0ndKszIYRxyLbIz3URh1MSTMGT+f9Zxy3iARB8vVP9g==}
     dev: true
 
+  /@node-kit/extra.fs@3.1.1:
+    resolution: {integrity: sha512-pKwNgj+v+0CMh5IAjVN9HeyMKonQtx3xf/KF6K0o51KWIKIvTGl2b2jMN4tgNXd1cdachfEe01GSr0z6/T+cwA==}
+    hasBin: true
+    dev: true
+
   /@node-kit/extra.path@2.5.1:
     resolution: {integrity: sha512-Ab11rUZjs78Yl1/EtOh8K9df+BkWd+cwC1xA70GDOWw+5a/TstsrpKxUtpujUZfCBldaMhn5Szd6tvejxtkGtQ==}
     dev: true
@@ -3249,6 +3254,11 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
+  /commander@11.0.0:
+    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
+    engines: {node: '>=16'}
+    dev: true
+
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
@@ -3266,10 +3276,6 @@ packages:
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
-    dev: true
-
-  /consola@2.15.3:
-    resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
     dev: true
 
   /consola@3.1.0:
@@ -5577,18 +5583,6 @@ packages:
       skip-regex: 1.0.2
     dev: true
 
-  /js-cool@2.8.0(core-js@3.30.2):
-    resolution: {integrity: sha512-k2oWpZfYgqXaciJaG/aAKg2PoNyiZ37SeO0t6yVtlolY50Lwv8WnqmSekSAHTrXvxtLzN4VNj8eGhQi9lG6abQ==}
-    peerDependencies:
-      core-js: '>=3.0.0'
-      tslib: '>=2.0.0'
-    peerDependenciesMeta:
-      tslib:
-        optional: true
-    dependencies:
-      core-js: 3.30.2
-    dev: true
-
   /js-cool@4.7.0:
     resolution: {integrity: sha512-8H3rUxI9xNCkSFGMsBCcmiMQtrSZsGG4hjNYAZUta/xKvjtHboPPDEGw4TxaLU3x7zxj2akvjlPFm5Ki+Om5EA==}
     engines: {node: '>=12.20'}
@@ -7016,21 +7010,16 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rm-all@1.0.0(core-js@3.30.2):
-    resolution: {integrity: sha512-no+Lt1FH9EMV2vXz5qUMB9n9JnyUn1QQsaTk4aT2Gkw13HufCGbecTIsDcUy+n7NnuZbmQbPlerpIcXU3R0hlg==}
+  /rm-all@1.1.1(js-cool@5.3.1):
+    resolution: {integrity: sha512-5n3SiDtp0BxHX485YhfbxR1RLtR9KlRTCj0hHahTufYEhUyE9ydy1nRtP4OG9kXifsYClu43gwkqcOnjpz/HPQ==}
     engines: {node: '>=12.20'}
     hasBin: true
     peerDependencies:
-      core-js: '>= 3'
+      js-cool: '>= 2'
     dependencies:
-      '@node-kit/extra.fs': 2.5.1
-      chalk: 4.1.2
-      commander: 10.0.1
-      consola: 2.15.3
-      core-js: 3.30.2
-      js-cool: 2.8.0(core-js@3.30.2)
-    transitivePeerDependencies:
-      - tslib
+      '@node-kit/extra.fs': 3.1.1
+      commander: 11.0.0
+      js-cool: 5.3.1
     dev: true
 
   /rollup-plugin-cleanup@3.2.1(rollup@3.26.2):
