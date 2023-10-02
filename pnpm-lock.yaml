@@ -9,7 +9,7 @@ dependencies:
     version: 5.10.0
   vue-demi:
     specifier: ^0.14.5
-    version: 0.14.5(@vue/composition-api@1.0.0)(vue@3.3.4)
+    version: 0.14.5(vue@3.3.4)
 
 devDependencies:
   '@babel/core':
@@ -89,7 +89,7 @@ devDependencies:
     version: 3.0.0(debug@4.3.4)(js-cool@5.10.0)
   rm-all:
     specifier: ^1.0.0
-    version: 1.1.1(js-cool@5.3.1)
+    version: 1.1.1(js-cool@5.10.0)
   rollup:
     specifier: ^3.23.0
     version: 3.26.2
@@ -112,11 +112,11 @@ devDependencies:
     specifier: ^1.1.0
     version: 1.1.0
   typedoc:
-    specifier: ^0.24.7
-    version: 0.24.7(typescript@5.0.4)
+    specifier: ^0.25.1
+    version: 0.25.1(typescript@5.0.4)
   typedoc-plugin-markdown:
     specifier: ^3.15.3
-    version: 3.15.3(typedoc@0.24.7)
+    version: 3.15.3(typedoc@0.25.1)
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
@@ -6061,8 +6061,8 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch@9.0.1:
-    resolution: {integrity: sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==}
+  /minimatch@9.0.3:
+    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
@@ -7010,7 +7010,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rm-all@1.1.1(js-cool@5.3.1):
+  /rm-all@1.1.1(js-cool@5.10.0):
     resolution: {integrity: sha512-5n3SiDtp0BxHX485YhfbxR1RLtR9KlRTCj0hHahTufYEhUyE9ydy1nRtP4OG9kXifsYClu43gwkqcOnjpz/HPQ==}
     engines: {node: '>=12.20'}
     hasBin: true
@@ -7019,7 +7019,7 @@ packages:
     dependencies:
       '@node-kit/extra.fs': 3.1.1
       commander: 11.0.0
-      js-cool: 5.3.1
+      js-cool: 5.10.0
     dev: true
 
   /rollup-plugin-cleanup@3.2.1(rollup@3.26.2):
@@ -7702,25 +7702,25 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
-  /typedoc-plugin-markdown@3.15.3(typedoc@0.24.7):
+  /typedoc-plugin-markdown@3.15.3(typedoc@0.25.1):
     resolution: {integrity: sha512-idntFYu3vfaY3eaD+w9DeRd0PmNGqGuNLKihPU9poxFGnATJYGn9dPtEhn2QrTdishFMg7jPXAhos+2T6YCWRQ==}
     peerDependencies:
       typedoc: '>=0.24.0'
     dependencies:
       handlebars: 4.7.7
-      typedoc: 0.24.7(typescript@5.0.4)
+      typedoc: 0.25.1(typescript@5.0.4)
     dev: true
 
-  /typedoc@0.24.7(typescript@5.0.4):
-    resolution: {integrity: sha512-zzfKDFIZADA+XRIp2rMzLe9xZ6pt12yQOhCr7cD7/PBTjhPmMyMvGrkZ2lPNJitg3Hj1SeiYFNzCsSDrlpxpKw==}
-    engines: {node: '>= 14.14'}
+  /typedoc@0.25.1(typescript@5.0.4):
+    resolution: {integrity: sha512-c2ye3YUtGIadxN2O6YwPEXgrZcvhlZ6HlhWZ8jQRNzwLPn2ylhdGqdR8HbyDRyALP8J6lmSANILCkkIdNPFxqA==}
+    engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x
     dependencies:
       lunr: 2.3.9
       marked: 4.3.0
-      minimatch: 9.0.1
+      minimatch: 9.0.3
       shiki: 0.14.1
       typescript: 5.0.4
     dev: true
@@ -7890,7 +7890,7 @@ packages:
     resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==}
     dev: true
 
-  /vue-demi@0.14.5(@vue/composition-api@1.0.0)(vue@3.3.4):
+  /vue-demi@0.14.5(vue@3.3.4):
     resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
     engines: {node: '>=12'}
     hasBin: true
@@ -7902,7 +7902,6 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      '@vue/composition-api': 1.0.0(vue@3.3.4)
       vue: 3.3.4
     dev: false
 
