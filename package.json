@@ -79,7 +79,7 @@
 		"prettier-config-common": "^1.4.0",
 		"reinstaller": "^3.0.0",
 		"rm-all": "^1.0.0",
-		"rollup": "^3.23.0",
+		"rollup": "^4.0.2",
 		"rollup-plugin-cleanup": "^3.2.1",
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-inject-code": "^1.0.0",
