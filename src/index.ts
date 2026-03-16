@@ -1,5 +1,5 @@
-import { Vue2, createVNode, isVue2, render } from 'vue-demi'
 import type { App, VNode, VNodeProps } from 'vue-demi'
+import { createVNode, isVue2, render, Vue2 } from 'vue-demi'
 
 export type CreateVNodeParameters = Parameters<typeof createVNode>
 export type Component = CreateVNodeParameters['0']
@@ -23,7 +23,7 @@ export interface Options {
 	/**
 	 * tagName of mount target, default: div
 	 */
-	tagName?: keyof HTMLElementTagNameMap
+	tagName?: string
 	/**
 	 * vue3.0 app
 	 */
@@ -51,9 +51,7 @@ class Mount {
 		if (typeof document === 'undefined') throw new Error('This plugin works in browser')
 		this.options = options
 		this.target =
-			(typeof options.target === 'string'
-				? document.querySelector(options.target)
-				: options.target) || document.createElement(options.tagName || 'div')
+			(typeof options.target === 'string' ? document.querySelector(options.target) : options.target) || document.createElement(options.tagName || 'div')
 		this.vNode = this.createVM(component, options)
 	}
 
@@ -67,28 +65,32 @@ class Mount {
 			isBlockNode,
 			app,
 			context,
-			parent
-		}: Options = {}
-	) {
+			parent,
+		}: Options = {},
+	): VNode | typeof Vue2 {
 		let vNode
+
 		if (isVue2) {
 			const VueConstructor = Vue2.extend(Object.assign({}, context || {}, component))
+
 			vNode = new VueConstructor({
 				parent,
-				propsData: props
+				propsData: props,
 			})
-			vNode.id = 'mount-plugin-' + this.seed++
+			vNode.id = `mount-plugin-${this.seed++}`
+
 			return vNode
 		} else {
 			vNode = createVNode(component, props, children, patchFlag, dynamicProps, isBlockNode)
 			// set context
 			if (app?._context) vNode.appContext = app._context
+
 			return vNode
 		}
 	}
 
 	// mount
-	mount() {
+	mount(): void {
 		// target is not mounted
 		!this.options.target && document.body.appendChild(this.target)
 		if (isVue2) {
@@ -99,7 +101,7 @@ class Mount {
 	}
 
 	// unmount
-	unmount() {
+	unmount(): void {
 		if (isVue2) {
 			this.vNode.$destroy()
 			document.body.removeChild(this.vNode.$el)

@@ -1,10 +1,10 @@
 module.exports = {
-	out: 'docs',
 	entryPoints: ['src/index.ts'],
+	includeVersion: true,
 	json: 'docs/out.json',
 	name: 'index.md',
-	includeVersion: true,
-	readme: 'README.md'
+	out: 'docs',
+	readme: 'README.md',
 	// emit: true,
 	// exclude: '',
 	// externalPattern: '',

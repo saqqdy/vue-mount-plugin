@@ -1,3 +1,0 @@
-test('defines init() & create()', () => {
-	//
-})

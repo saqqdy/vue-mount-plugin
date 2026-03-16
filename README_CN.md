@@ -2,7 +2,7 @@
 
 # vue-mount-plugin
 
-A simple and easy to use vue instance extension plugin that supports vue2.0 and vue3.0
+一个简单易用的 Vue 实例扩展插件，支持 Vue 2.0 和 Vue 3.0
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]
@@ -17,26 +17,26 @@ A simple and easy to use vue instance extension plugin that supports vue2.0 and 
 
 <div style="text-align: center; margin-bottom: 20px;" align="center">
 
-**[Documentation](https://www.saqqdy.com/vue-mount-plugin)** • **[Changelog](./CHANGELOG.md)** • **[中文文档](./README_CN.md)**
+**[文档](https://www.saqqdy.com/vue-mount-plugin)** • **[更新日志](./CHANGELOG.md)** • **[English](./README.md)**
 
 </div>
 
-## Installing
+## 安装
 
 ```bash
-# use pnpm
+# 使用 pnpm
 $ pnpm install vue-mount-plugin
 
-# use npm
+# 使用 npm
 $ npm install vue-mount-plugin --save
 
-# use yarn
+# 使用 yarn
 $ yarn add vue-mount-plugin
 ```
 
-## Usage
+## 使用
 
-### Use in Vue `>=3.0`
+### 在 Vue `>=3.0` 中使用
 
 ```vue
 <!-- test.vue -->
@@ -48,15 +48,15 @@ import DemoVue from './demo.vue'
 const { proxy } = getCurrentInstance()
 const instance = new Mount(DemoVue, { parent: proxy.$root })
 
-// mount to the end of document.body
+// 挂载到 document.body 末尾
 instance.mount()
 
-// unmount
+// 卸载
 instance.unmount()
 </script>
 ```
 
-### Use in Vue `2.7`
+### 在 Vue `2.7` 中使用
 
 ```vue
 <!-- test.vue -->
@@ -70,19 +70,19 @@ export default {
     const { proxy } = getCurrentInstance()
     const instance = new Mount(DemoVue, { parent: proxy.$root })
 
-    // mount to the end of document.body
+    // 挂载到 document.body 末尾
     instance.mount()
 
-    // unmount
+    // 卸载
     instance.unmount()
   }
 }
 </script>
 ```
 
-### Use in Vue `<=2.6`
+### 在 Vue `<=2.6` 中使用
 
-> Add `@vue/composition-api` to the `package.json` dependencies and run install.
+> 将 `@vue/composition-api` 添加到 `package.json` 依赖中并运行安装。
 
 ```json
 {
@@ -104,25 +104,25 @@ export default {
     const { proxy } = getCurrentInstance()
     const instance = new Mount(DemoVue, { parent: proxy.$root })
 
-    // mount to the end of document.body
+    // 挂载到 document.body 末尾
     instance.mount()
 
-    // unmount
+    // 卸载
     instance.unmount()
   }
 }
 </script>
 ```
 
-### Import in Browser
+### 在浏览器中使用
 
-Import `vue-mount-plugin` through browser HTML tags directly, and use global variable `VueMount`.
+直接通过浏览器 HTML 标签引入 `vue-mount-plugin`，使用全局变量 `VueMount`。
 
 ```html
 <head>
-  <!-- Import vue3 or vue2 -->
+  <!-- 引入 vue3 或 vue2 -->
   <script src="//unpkg.com/vue@3"></script>
-  <!-- Import vue-mount-plugin library -->
+  <!-- 引入 vue-mount-plugin 库 -->
   <script src="//unpkg.com/vue-mount-plugin@3/dist/index.iife.min.js"></script>
 </head>
 ```
@@ -131,77 +131,77 @@ Import `vue-mount-plugin` through browser HTML tags directly, and use global var
 <script>
   const instance = new VueMount(DemoVue, { parent: this.$root })
 
-  // mount to the end of document.body
+  // 挂载到 document.body 末尾
   instance.mount()
 
-  // unmount
+  // 卸载
   instance.unmount()
 </script>
 ```
 
-### ES5 Support
+### ES5 支持
 
-For older browsers (IE11), use the ES5 build:
+对于旧版浏览器（IE11），请使用 ES5 构建版本：
 
 ```html
 <head>
-  <!-- Import vue2 (Vue 3 does not support IE11) -->
+  <!-- 引入 vue2（Vue 3 不支持 IE11） -->
   <script src="//unpkg.com/vue@2"></script>
-  <!-- Import vue-mount-plugin ES5 build -->
+  <!-- 引入 vue-mount-plugin ES5 版本 -->
   <script src="//unpkg.com/vue-mount-plugin@3/dist/index.es5.min.js"></script>
 </head>
 ```
 
 ## API
 
-### Constructor
+### 构造函数
 
 ```typescript
 new Mount(component, options?)
 ```
 
-#### Parameters
+#### 参数
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `component` | `Component` | Vue component to mount |
-| `options` | `Options` | Mount options (optional) |
+| 参数 | 类型 | 描述 |
+|------|------|------|
+| `component` | `Component` | 要挂载的 Vue 组件 |
+| `options` | `Options` | 挂载选项（可选） |
 
-#### Options
+#### 选项
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `app` | `App` | - | Vue 3 app instance |
-| `children` | `unknown` | - | Children for VNode |
-| `context` | `object` | - | Vue 2 context (router, store, i18n) |
-| `parent` | `unknown` | - | Parent component instance |
-| `props` | `object` | - | Props to pass to component |
-| `target` | `Element \| string` | - | Mount target element or selector |
-| `tagName` | `string` | `'div'` | Tag name for auto-created container |
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `app` | `App` | - | Vue 3 应用实例 |
+| `children` | `unknown` | - | VNode 的子节点 |
+| `context` | `object` | - | Vue 2 上下文（router, store, i18n） |
+| `parent` | `unknown` | - | 父组件实例 |
+| `props` | `object` | - | 传递给组件的 props |
+| `target` | `Element \| string` | - | 挂载目标元素或选择器 |
+| `tagName` | `string` | `'div'` | 自动创建的容器标签名 |
 
-### Methods
+### 方法
 
-| Method | Description |
-|--------|-------------|
-| `mount()` | Mount the component to DOM |
-| `unmount()` | Unmount and destroy the component |
+| 方法 | 描述 |
+|------|------|
+| `mount()` | 将组件挂载到 DOM |
+| `unmount()` | 卸载并销毁组件 |
 
-## Build Outputs
+## 构建输出
 
-| File | Format | Description |
-|------|--------|-------------|
-| `index.mjs` | ESM | ES Module for bundlers |
-| `index.cjs` | CJS | CommonJS for Node.js |
-| `index.iife.js` | IIFE | Browser build |
-| `index.iife.min.js` | IIFE | Browser build (minified) |
-| `index.es5.js` | UMD | ES5 compatible build |
-| `index.es5.min.js` | UMD | ES5 compatible build (minified) |
+| 文件 | 格式 | 描述 |
+|------|------|------|
+| `index.mjs` | ESM | 适用于打包工具的 ES Module |
+| `index.cjs` | CJS | 适用于 Node.js 的 CommonJS |
+| `index.iife.js` | IIFE | 浏览器版本 |
+| `index.iife.min.js` | IIFE | 浏览器版本（压缩） |
+| `index.es5.js` | UMD | ES5 兼容版本 |
+| `index.es5.min.js` | UMD | ES5 兼容版本（压缩） |
 
-## Support & Issues
+## 支持与问题
 
-Please open an issue [here](https://github.com/saqqdy/vue-mount-plugin/issues).
+请在 [这里](https://github.com/saqqdy/vue-mount-plugin/issues) 提交 issue。
 
-## License
+## 许可证
 
 [MIT](LICENSE)
 

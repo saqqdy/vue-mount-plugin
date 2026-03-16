@@ -34,9 +34,12 @@
 		},
 		"tsdocMessageReporting": {
 			"default": {
-				"logLevel": "warning"
+				"logLevel": "none"
 			},
 			"tsdoc-undefined-tag": {
+				"logLevel": "none"
+			},
+			"tsdoc-param-tag-missing-hyphen": {
 				"logLevel": "none"
 			}
 		}
