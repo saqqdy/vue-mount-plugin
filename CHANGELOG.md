@@ -2,29 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
-## [3.2.0] - 2024-03-16
+## [4.0.0] - 2025-03-16
 
 ### Added
 
+- **Lifecycle Hooks**: `onBeforeMount`, `onMounted`, `onBeforeUnmount`, `onUnmounted` callbacks
+- **Event Listeners**: `listeners` and `on` options for component event handling
+- **Slots Support**: `slots` option to pass slot content to components
+- **Ref Support**: `ref` option to get component instance reference
+- **KeepAlive Options**: `keepAlive` option interface for component caching
+- **Async Components**: Support for async components via function constructor
+- **Method Aliases**: `destroy()` and `remove()` as aliases for `unmount()`
+- **Chained API**: `setProps()`, `setListeners()`, `on()`, `setSlots()`, `setTarget()`, `setHooks()` methods
+- **Instance Management**: Static `instances` getter, `unmountAll()`, `destroyAll()`, `getById()` methods
+- **TypeScript Generics**: `Options<TContext>` with generic context type
 - ESM module support (`"type": "module"` in package.json)
 - ES5 build output (`dist/index.es5.js`, `dist/index.es5.min.js`) for legacy browser support
 - `build:es5` script for ES5 compatible builds
+- Comprehensive test coverage (86%+) with Vitest and jsdom
 
 ### Changed
 
 - **Build System**: Migrate build scripts to use `tsx` instead of `rollup -c` with typescript plugin
-- **Testing**: Migrate from Jest to Vitest
+- **Testing**: Migrate from Jest to Vitest with 73 test cases
 - **Linting**: Migrate from `.eslintrc.js` to `eslint.config.mjs` (ESLint 9 flat config)
 - **Dependencies**: Major version upgrades:
   - ESLint 8.x → 9.x
-  - TypeScript 5.0.x → 5.7.x
+  - TypeScript 5.0.x → 5.9.x
   - Vitest (new) replacing Jest
   - All rollup plugins updated to latest
 
 ### Fixed
 
-- IIFE build now correctly keeps `vue/vue-demi` as external dependencies
+- IIFE build now correctly keeps `vue/vue-demi` as external dependencies (reduced from 240KB to 7KB)
 - TypeScript plugin warning about temporary config files
+- `mount()` method now returns `this` for potential chaining
 
 ### Breaking Changes
 
@@ -55,7 +67,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - New build output structure
-- Remove ES5 build (re-added in v3.2.0)
+- Remove ES5 build (re-added in v4.0.0)
 - Dependency updates
 
 ## [2.1.1] - 2023-04-04

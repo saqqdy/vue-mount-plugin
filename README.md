@@ -123,7 +123,7 @@ Import `vue-mount-plugin` through browser HTML tags directly, and use global var
   <!-- Import vue3 or vue2 -->
   <script src="//unpkg.com/vue@3"></script>
   <!-- Import vue-mount-plugin library -->
-  <script src="//unpkg.com/vue-mount-plugin@3/dist/index.iife.min.js"></script>
+  <script src="//unpkg.com/vue-mount-plugin@4/dist/index.iife.min.js"></script>
 </head>
 ```
 
@@ -148,7 +148,7 @@ For older browsers (IE11), use the ES5 build:
   <!-- Import vue2 (Vue 3 does not support IE11) -->
   <script src="//unpkg.com/vue@2"></script>
   <!-- Import vue-mount-plugin ES5 build -->
-  <script src="//unpkg.com/vue-mount-plugin@3/dist/index.es5.min.js"></script>
+  <script src="//unpkg.com/vue-mount-plugin@4/dist/index.es5.min.js"></script>
 </head>
 ```
 
@@ -164,7 +164,7 @@ new Mount(component, options?)
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `component` | `Component` | Vue component to mount |
+| `component` | `Component` | Vue component to mount (supports async components) |
 | `options` | `Options` | Mount options (optional) |
 
 #### Options
@@ -178,13 +178,231 @@ new Mount(component, options?)
 | `props` | `object` | - | Props to pass to component |
 | `target` | `Element \| string` | - | Mount target element or selector |
 | `tagName` | `string` | `'div'` | Tag name for auto-created container |
+| `listeners` | `Listeners` | - | Event listeners object |
+| `on` | `Listeners` | - | Event listeners (alias) |
+| `slots` | `Slots` | - | Slots object |
+| `ref` | `Ref` | - | Ref to get component instance |
+| `keepAlive` | `KeepAliveOptions \| boolean` | - | KeepAlive configuration |
 
-### Methods
+#### Lifecycle Hooks
 
-| Method | Description |
-|--------|-------------|
-| `mount()` | Mount the component to DOM |
-| `unmount()` | Unmount and destroy the component |
+| Hook | Description |
+|------|-------------|
+| `onBeforeMount` | Called before component is mounted |
+| `onMounted` | Called after component is mounted |
+| `onBeforeUnmount` | Called before component is unmounted |
+| `onUnmounted` | Called after component is unmounted |
+
+### Instance Methods
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `mount()` | `this` | Mount the component to DOM |
+| `unmount()` | `void` | Unmount and destroy the component |
+| `destroy()` | `void` | Alias for `unmount()` |
+| `remove()` | `void` | Alias for `unmount()` |
+| `setProps(props)` | `this` | Set props (chainable) |
+| `setListeners(listeners)` | `this` | Set event listeners (chainable) |
+| `on(listeners)` | `this` | Alias for `setListeners()` |
+| `setSlots(slots)` | `this` | Set slots (chainable) |
+| `setTarget(target)` | `this` | Set mount target (chainable) |
+| `setHooks(hooks)` | `this` | Set lifecycle hooks (chainable) |
+
+### Instance Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `id` | `number` | Unique instance ID (readonly) |
+| `vNode` | `VNode` | Vue virtual node |
+| `target` | `Element` | Mount target element |
+| `componentInstance` | `ComponentPublicInstance` | Mounted component instance |
+
+### Static Methods
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `Mount.instances` | `Mount[]` | Get all active instances |
+| `Mount.unmountAll()` | `void` | Unmount all instances |
+| `Mount.destroyAll()` | `void` | Alias for `unmountAll()` |
+| `Mount.getById(id)` | `Mount \| undefined` | Get instance by ID |
+
+## Usage Examples
+
+### Lifecycle Hooks
+
+```typescript
+const instance = new Mount(DemoVue, {
+  onBeforeMount: (instance) => {
+    console.log('About to mount', instance.id)
+  },
+  onMounted: (instance) => {
+    console.log('Mounted', instance.componentInstance)
+  },
+  onBeforeUnmount: (instance) => {
+    console.log('About to unmount')
+  },
+  onUnmounted: (instance) => {
+    console.log('Unmounted')
+  }
+})
+instance.mount()
+```
+
+### Event Listeners
+
+```typescript
+const instance = new Mount(DemoVue, {
+  listeners: {
+    click: (event) => console.log('Clicked!', event),
+    close: () => instance.unmount()
+  }
+})
+// or use 'on' alias
+const instance2 = new Mount(DemoVue, {
+  on: {
+    submit: (data) => console.log('Submitted:', data)
+  }
+})
+```
+
+### Slots
+
+```typescript
+const instance = new Mount(ModalComponent, {
+  slots: {
+    default: [h('p', 'Modal content')],
+    header: [h('h2', 'Title')],
+    footer: [h('button', 'Close')]
+  }
+})
+```
+
+### Ref Access
+
+```typescript
+import { ref } from 'vue'
+
+const componentRef = ref(null)
+const instance = new Mount(DemoVue, { ref: componentRef })
+
+instance.mount()
+// Access the component instance
+console.log(componentRef.value) // ComponentPublicInstance
+```
+
+### Async Components
+
+```typescript
+// Async component with dynamic import
+const instance = new Mount(
+  () => import('./HeavyComponent.vue'),
+  { parent: proxy.$root }
+)
+instance.mount()
+```
+
+### Chained API
+
+```typescript
+const instance = new Mount(DemoVue)
+  .setProps({ title: 'Hello' })
+  .setListeners({ click: handleClick })
+  .setTarget('#modal-container')
+  .setHooks({ onMounted: () => console.log('Ready!') })
+  .mount()
+```
+
+### Instance Management
+
+```typescript
+// Get all active instances
+const allInstances = Mount.instances
+console.log(`Active instances: ${allInstances.length}`)
+
+// Get specific instance by ID
+const instance = Mount.getById(1)
+
+// Unmount all instances at once
+Mount.unmountAll()
+```
+
+## Migration from v3.x to v4.0
+
+### Breaking Changes
+
+#### 1. Build Output File Names
+
+If you reference the build files directly, update the paths:
+
+| v3.x | v4.0 |
+|------|------|
+| `dist/index.esm-browser.js` | `dist/index.iife.js` |
+| `dist/index.esm-browser.prod.js` | `dist/index.iife.min.js` |
+| `dist/index.esm-bundler.js` | `dist/index.mjs` |
+| `dist/index.cjs.js` | `dist/index.cjs` |
+| `dist/index.global.js` | removed |
+| `dist/index.global.prod.js` | removed |
+
+#### 2. Node.js Version
+
+Minimum Node.js version increased from `>=12.20` to `>=14.14.0`.
+
+#### 3. CDN Links
+
+Update your CDN links:
+
+```html
+<!-- v3.x -->
+<script src="//unpkg.com/vue-mount-plugin@3/dist/index.esm-browser.prod.js"></script>
+
+<!-- v4.0 -->
+<script src="//unpkg.com/vue-mount-plugin@4/dist/index.iife.min.js"></script>
+```
+
+### New Features (Optional Adoption)
+
+v4.0 introduces many new features that are backward compatible:
+
+```typescript
+// Lifecycle hooks
+const instance = new Mount(Component, {
+  onBeforeMount: (instance) => console.log('before mount'),
+  onMounted: (instance) => console.log('mounted'),
+})
+
+// Event listeners
+const instance = new Mount(Component, {
+  listeners: { click: handleClick },
+  // or
+  on: { click: handleClick },
+})
+
+// Ref support
+const ref = { value: null }
+new Mount(Component, { ref })
+
+// Chained API
+new Mount(Component)
+  .setProps({ title: 'Hello' })
+  .setTarget('#container')
+  .mount()
+
+// Instance management
+const allInstances = Mount.instances
+Mount.unmountAll()
+const instance = Mount.getById(1)
+```
+
+### No Code Changes Required
+
+If you only use the basic API, no code changes are needed:
+
+```typescript
+// This still works in v4.0
+const instance = new Mount(Component, { parent: this.$root })
+instance.mount()
+instance.unmount()
+```
 
 ## Build Outputs
 
