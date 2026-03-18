@@ -75,9 +75,28 @@ export interface Options<TContext = Record<string, unknown>> extends MountHooks 
 
 let cachedRender: RenderFn | undefined,
 	instanceId = 0
+
 const instances: Set<Mount> = new Set()
 
 // ==================== Helper Functions ====================
+
+/** Check if running in Node.js environment */
+function isNodeEnv(): boolean {
+	return typeof process !== 'undefined' && !!process.versions?.node
+}
+
+/** Dynamic import that works in both Node.js and browser */
+function dynamicImportVue(): Promise<any> {
+	if (isNodeEnv()) {
+		return import('vue')
+	}
+
+	// Use Function constructor for browser to prevent bundlers from transforming
+	// eslint-disable-next-line no-new-func
+	const dynamicImport = new Function('module', 'return import(module)')
+
+	return dynamicImport('vue')
+}
 
 /**
  * Get Vue 3 render function
@@ -87,11 +106,7 @@ function getRender(): RenderFn | undefined {
 	if (isVue2) return undefined
 	if (cachedRender) return cachedRender
 
-	// Use Function constructor to prevent bundlers from transforming the import
-	// eslint-disable-next-line no-new-func
-	const dynamicImport = new Function('module', 'return import(module)')
-
-	dynamicImport('vue').then((vue: any) => {
+	dynamicImportVue().then((vue: any) => {
 		cachedRender = vue.render
 	})
 
@@ -149,10 +164,9 @@ class Mount {
 		this.vNode = this._createVM(component, options)
 	}
 
-	/**
-	 * Initialize target element
-	 * Vue 2 needs a wrapper element to prevent $mount from replacing the target
-	 */
+	// ==================== Private Methods ====================
+
+	/** Initialize target element */
 	private _initTarget(options: Options): void {
 		const specifiedTarget = resolveTarget(options.target)
 
@@ -174,7 +188,7 @@ class Mount {
 		}
 	}
 
-	/** Create VNode */
+	/** Create VNode or Vue 2 instance */
 	private _createVM(
 		component: Component,
 		{ props, children, app, parent, listeners, on, slots }: Options = {},
@@ -182,14 +196,14 @@ class Mount {
 		const mergedListeners = { ...listeners, ...on }
 
 		if (isVue2) {
-			return this._createVue2VM(component, props, parent, mergedListeners)
+			return this._createVue2Instance(component, props, parent, mergedListeners)
 		}
 
 		return this._createVue3VNode(component, props, children, app, slots, mergedListeners)
 	}
 
 	/** Create Vue 2 component instance */
-	private _createVue2VM(
+	private _createVue2Instance(
 		component: Component,
 		props: Data | null | undefined,
 		parent: unknown,
@@ -198,7 +212,7 @@ class Mount {
 		const VueConstructor = Vue2 as any
 		const componentAny = component as any
 
-		// Get component options
+		// Get component options (handle async components and Vue.extend constructors)
 		let componentOptions = componentAny
 
 		if (typeof componentAny === 'function' && componentAny.cid !== undefined) {
@@ -207,7 +221,7 @@ class Mount {
 			componentOptions = componentAny.options
 		}
 
-		// Create component constructor
+		// Create and configure instance
 		const ComponentConstructor = VueConstructor.extend(componentOptions)
 		const instance = new ComponentConstructor({
 			propsData: props || {},
@@ -259,33 +273,6 @@ class Mount {
 		return vNode
 	}
 
-	// ==================== Public Methods ====================
-
-	/** Mount the component */
-	mount(): this {
-		// Recreate VNode if options were updated via chained API
-		if (this.options.props || this.options.listeners || this.options.on || this.options.slots) {
-			this.vNode = this._createVM(this._component, this.options)
-		}
-
-		this.options.onBeforeMount?.(this)
-		this._appendTargetToDOM()
-
-		if (isVue2) {
-			this._mountVue2()
-		} else {
-			this._mountVue3()
-		}
-
-		if (this.options.ref) {
-			this.options.ref.value = this.componentInstance
-		}
-
-		this.options.onMounted?.(this)
-
-		return this
-	}
-
 	/** Append target element to DOM */
 	private _appendTargetToDOM(): void {
 		if (!this.options.target) {
@@ -319,18 +306,80 @@ class Mount {
 		if (renderFn) {
 			renderFn(this.vNode as VNode, this.target)
 		} else {
-			// eslint-disable-next-line no-new-func
-			const dynamicImport = new Function('module', 'return import(module)')
+			// Render not cached: dynamically import and render
+			const vNode = this.vNode as VNode
+			const target = this.target
 
-			dynamicImport('vue').then((vue: any) => {
+			dynamicImportVue().then((vue: any) => {
 				cachedRender = vue.render
-				if (cachedRender) {
-					cachedRender(this.vNode as VNode, this.target)
+				if (cachedRender && vNode) {
+					cachedRender(vNode, target)
 				}
 			})
 		}
 
 		this.componentInstance = (this.vNode as VNode).component?.proxy ?? null
+	}
+
+	/** Unmount for Vue 2 */
+	private _unmountVue2(): void {
+		const vm = this.vNode as any
+
+		vm?.$destroy()
+
+		if (this._autoCreatedTarget && this.target?.parentNode) {
+			this.target.parentNode.removeChild(this.target)
+		}
+	}
+
+	/** Unmount for Vue 3 */
+	private _unmountVue3(): void {
+		const renderFn = getRender()
+
+		if (renderFn) {
+			renderFn(null, this.target)
+		}
+
+		if (this._autoCreatedTarget && document.body.contains(this.target)) {
+			document.body.removeChild(this.target)
+		}
+	}
+
+	/** Update target for Vue 2 wrapper pattern */
+	private _updateTargetForVue2(specifiedTarget: Element | ShadowRoot): void {
+		const wrapper = document.createElement('div')
+
+		wrapper.setAttribute('data-mount-wrapper', String(this.id))
+		this.target = wrapper
+		this._autoCreatedTarget = true
+		this._originalTarget = specifiedTarget
+	}
+
+	// ==================== Public Methods ====================
+
+	/** Mount the component */
+	mount(): this {
+		// Recreate VNode if options were updated via chained API
+		if (this.options.props || this.options.listeners || this.options.on || this.options.slots) {
+			this.vNode = this._createVM(this._component, this.options)
+		}
+
+		this.options.onBeforeMount?.(this)
+		this._appendTargetToDOM()
+
+		if (isVue2) {
+			this._mountVue2()
+		} else {
+			this._mountVue3()
+		}
+
+		if (this.options.ref) {
+			this.options.ref.value = this.componentInstance
+		}
+
+		this.options.onMounted?.(this)
+
+		return this
 	}
 
 	/** Unmount the component */
@@ -353,30 +402,6 @@ class Mount {
 		instances.delete(this)
 
 		this.options.onUnmounted?.(this)
-	}
-
-	/** Unmount for Vue 2 */
-	private _unmountVue2(): void {
-		const vm = this.vNode as any
-
-		vm?.$destroy()
-
-		if (this._autoCreatedTarget && this.target && this.target.parentNode) {
-			this.target.parentNode.removeChild(this.target)
-		}
-	}
-
-	/** Unmount for Vue 3 */
-	private _unmountVue3(): void {
-		const renderFn = getRender()
-
-		if (renderFn) {
-			renderFn(null, this.target)
-		}
-
-		if (this._autoCreatedTarget && document.body.contains(this.target)) {
-			document.body.removeChild(this.target)
-		}
 	}
 
 	/** Unmount the component (alias) */
@@ -418,12 +443,7 @@ class Mount {
 
 		if (specifiedTarget) {
 			if (isVue2) {
-				const wrapper = document.createElement('div')
-
-				wrapper.setAttribute('data-mount-wrapper', String(this.id))
-				this.target = wrapper
-				this._autoCreatedTarget = true
-				this._originalTarget = specifiedTarget
+				this._updateTargetForVue2(specifiedTarget)
 			} else {
 				this.target = specifiedTarget
 				this._autoCreatedTarget = false
