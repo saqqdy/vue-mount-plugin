@@ -5,7 +5,13 @@
 			"Bash(pnpm build:*)",
 			"Bash(pnpm test:*)",
 			"Bash(pnpm lint:*)",
-			"Bash(pnpm:*)"
+			"Bash(pnpm:*)",
+			"Bash(pnpm setup:*)",
+			"Bash(cd:*)",
+			"Bash(pkill:*)",
+			"Bash(sleep:*)",
+			"Bash(curl:*)",
+			"Bash(npm run:*)"
 		]
 	}
 }

@@ -17,9 +17,18 @@
 
 <div style="text-align: center; margin-bottom: 20px;" align="center">
 
-**[文档](https://www.saqqdy.com/vue-mount-plugin)** • **[更新日志](./CHANGELOG.md)** • **[English](./README.md)**
+**[更新日志](./CHANGELOG.md)** • **[English](./README.md)**
 
 </div>
+
+## 快速体验
+
+通过 StackBlitz 在线体验：
+
+| 框架 | 链接 |
+| ---- | ---- |
+| Vue 3 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/vue-mount-plugin/tree/master/examples/vue3) |
+| Vue 2 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/vue-mount-plugin/tree/master/examples/vue2) |
 
 ## 安装
 

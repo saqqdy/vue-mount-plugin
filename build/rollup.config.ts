@@ -164,6 +164,7 @@ function createEntry(config: Config): Options {
 						outDir: 'dist',
 						target: IS_ES5 ? 'ES5' : 'ESNext',
 					},
+					exclude: ['examples/**', 'node_modules/**'],
 					tsconfig: './tsconfig.json',
 				}),
 			)

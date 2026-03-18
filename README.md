@@ -2,7 +2,7 @@
 
 # vue-mount-plugin
 
-A simple and easy to use vue instance extension plugin that supports vue2.0 and vue3.0
+A simple and easy to use Vue instance extension plugin that supports Vue 2.0 and Vue 3.0
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]
@@ -17,9 +17,18 @@ A simple and easy to use vue instance extension plugin that supports vue2.0 and 
 
 <div style="text-align: center; margin-bottom: 20px;" align="center">
 
-**[Documentation](https://www.saqqdy.com/vue-mount-plugin)** • **[Changelog](./CHANGELOG.md)** • **[中文文档](./README_CN.md)**
+**[Changelog](./CHANGELOG.md)** • **[中文文档](./README_CN.md)**
 
 </div>
+
+## Quick Try
+
+Try it online with StackBlitz:
+
+| Framework | Link |
+| --------- | ---- |
+| Vue 3 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/vue-mount-plugin/tree/master/examples/vue3) |
+| Vue 2 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/vue-mount-plugin/tree/master/examples/vue2) |
 
 ## Installing
 
@@ -268,6 +277,8 @@ const instance2 = new Mount(DemoVue, {
 ### Slots
 
 ```typescript
+import { h } from 'vue'
+
 const instance = new Mount(ModalComponent, {
   slots: {
     default: [h('p', 'Modal content')],

@@ -10,7 +10,7 @@
 		"tscjs",
 		"tsnd",
 		"unpub",
-		"unpublish"
-	],
-	"typescript.tsdk": "node_modules/typescript/lib"
+		"unpublish",
+		"vnode"
+	]
 }

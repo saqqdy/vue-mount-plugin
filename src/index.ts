@@ -1,7 +1,11 @@
 import type { App, ComponentPublicInstance, Ref, VNode, VNodeProps } from 'vue-demi'
-import { createVNode, defineAsyncComponent, isVue2, render, Vue2 } from 'vue-demi'
+import { defineAsyncComponent, h, isVue2, Vue2 } from 'vue-demi'
 
-export type CreateVNodeParameters = Parameters<typeof createVNode>
+// ==================== Types ====================
+
+type RenderFn = (vnode: VNode | null, container: Element | ShadowRoot) => void
+
+export type CreateVNodeParameters = Parameters<typeof h>
 export type Component = CreateVNodeParameters['0'] | (() => Promise<Component>)
 export type Data = Record<string, unknown>
 export type Listener = (...args: any[]) => void
@@ -13,322 +17,445 @@ export interface Slots {
 }
 
 export interface MountHooks {
-	/** 挂载前回调 / Callback before mount */
+	/** Callback before mount */
 	onBeforeMount?: (instance: Mount) => void
-	/** 挂载后回调 / Callback after mount */
+	/** Callback after mount */
 	onMounted?: (instance: Mount) => void
-	/** 卸载前回调 / Callback before unmount */
+	/** Callback before unmount */
 	onBeforeUnmount?: (instance: Mount) => void
-	/** 卸载后回调 / Callback after unmount */
+	/** Callback after unmount */
 	onUnmounted?: (instance: Mount) => void
 }
 
 export interface KeepAliveOptions {
-	/** 是否启用 KeepAlive / Enable KeepAlive */
+	/** Enable KeepAlive */
 	enabled?: boolean
-	/** 包含的组件 / Components to include */
+	/** Components to include */
 	include?: string | RegExp | string[]
-	/** 排除的组件 / Components to exclude */
+	/** Components to exclude */
 	exclude?: string | RegExp | string[]
-	/** 最大缓存数 / Max cache count */
+	/** Max cache count */
 	max?: number
 }
 
 export interface Options<TContext = Record<string, unknown>> extends MountHooks {
-	/** props 数据 / Props data */
+	/** Props data */
 	props?: (Data & VNodeProps) | null
-	/** 子节点 / Children nodes */
+	/** Children nodes */
 	children?: unknown
-	/** 补丁标志 / Patch flag */
+	/** Patch flag */
 	patchFlag?: number
-	/** 动态 props / Dynamic props */
+	/** Dynamic props */
 	dynamicProps?: string[] | null
-	/** 是否为块节点 / Is block node */
+	/** Is block node */
 	isBlockNode?: boolean
-	/** 挂载目标 / Mount target */
+	/** Mount target */
 	target?: Element | ShadowRoot | string
-	/** 容器标签名 / Container tag name */
+	/** Container tag name */
 	tagName?: string
-	/** Vue 3 应用实例 / Vue 3 app instance */
+	/** Vue 3 app instance */
 	app?: App
-	/** Vue 2 上下文 / Vue 2 context */
-	context?: TContext & {
-		router?: unknown
-		store?: unknown
-		i18n?: unknown
-	}
-	/** 父组件实例 / Parent component instance */
+	/** Vue 2 context */
+	context?: TContext & { router?: unknown; store?: unknown; i18n?: unknown }
+	/** Parent component instance */
 	parent?: unknown
-	/** 事件监听器 / Event listeners */
+	/** Event listeners */
 	listeners?: Listeners
-	/** 事件监听器（别名） / Event listeners (alias) */
+	/** Event listeners (alias) */
 	on?: Listeners
-	/** 插槽 / Slots */
+	/** Slots */
 	slots?: Slots
-	/** 组件实例引用 / Component instance ref */
+	/** Component instance ref */
 	ref?: Ref<ComponentPublicInstance | null>
-	/** KeepAlive 配置 / KeepAlive options */
+	/** KeepAlive options */
 	keepAlive?: KeepAliveOptions | boolean
 }
 
-// 实例管理
+// ==================== Module State ====================
+
+let cachedRender: RenderFn | undefined,
+	instanceId = 0
 const instances: Set<Mount> = new Set()
-let instanceId = 0
+
+// ==================== Helper Functions ====================
+
+/**
+ * Get Vue 3 render function
+ * Uses dynamic import to avoid bundling in Vue 2 environment
+ */
+function getRender(): RenderFn | undefined {
+	if (isVue2) return undefined
+	if (cachedRender) return cachedRender
+
+	// Use Function constructor to prevent bundlers from transforming the import
+	// eslint-disable-next-line no-new-func
+	const dynamicImport = new Function('module', 'return import(module)')
+
+	dynamicImport('vue').then((vue: any) => {
+		cachedRender = vue.render
+	})
+
+	return cachedRender
+}
+
+/** Capitalize first letter */
+function capitalize(str: string): string {
+	return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+/** Resolve target element from string or Element */
+function resolveTarget(target: Element | ShadowRoot | string | undefined): Element | ShadowRoot | null {
+	if (!target) return null
+
+	return typeof target === 'string' ? document.querySelector(target) : target
+}
+
+// ==================== Main Class ====================
 
 class Mount {
-	/** VNode 实例 / VNode instance */
+	/** VNode instance */
 	vNode: VNode | typeof Vue2 | null = null
-	/** 挂载目标 / Mount target */
-	target: Element | ShadowRoot
-	/** 选项 / Options */
+	/** Mount target */
+	target!: Element | ShadowRoot
+	/** Options */
 	options: Options = {}
-	/** 实例 ID / Instance ID */
+	/** Instance ID */
 	readonly id: number
-	/** 组件实例 / Component instance */
+	/** Component instance */
 	componentInstance: ComponentPublicInstance | null = null
 
 	private seed = 1
+	private _autoCreatedTarget = false
+	private _component: Component
+	private _originalTarget: Element | ShadowRoot | null = null
 
 	constructor(component: Component, options: Options = {}) {
 		if (typeof document === 'undefined') {
 			throw new TypeError('This plugin works in browser')
 		}
-		this.id = ++instanceId
-		this.options = options
-		this.target =
-			(typeof options.target === 'string' ? document.querySelector(options.target) : options.target) ||
-			document.createElement(options.tagName || 'div')
 
-		// 注册实例
+		this.id = ++instanceId
+		this._component = component
+		this.options = options
+
+		this._initTarget(options)
 		instances.add(this)
 
-		// 处理异步组件
+		// Handle async components
 		if (typeof component === 'function' && component.constructor.name === 'AsyncFunction') {
 			component = defineAsyncComponent(component as any)
 		}
 
-		this.vNode = this.createVM(component, options)
+		this.vNode = this._createVM(component, options)
 	}
 
 	/**
-	 * 创建 VNode
-	 * @internal
+	 * Initialize target element
+	 * Vue 2 needs a wrapper element to prevent $mount from replacing the target
 	 */
-	createVM(
-		component: Component,
-		{
-			props,
-			children,
-			patchFlag,
-			dynamicProps,
-			isBlockNode,
-			app,
-			context,
-			parent,
-			listeners,
-			on,
-			slots,
-		}: Options = {},
-	): VNode | typeof Vue2 {
-		let vNode: VNode | typeof Vue2
+	private _initTarget(options: Options): void {
+		const specifiedTarget = resolveTarget(options.target)
 
-		// 合并监听器
+		if (specifiedTarget) {
+			if (isVue2) {
+				// Vue 2: create wrapper to prevent $mount from replacing target
+				const wrapper = document.createElement('div')
+
+				wrapper.setAttribute('data-mount-wrapper', String(this.id))
+				this.target = wrapper
+				this._autoCreatedTarget = true
+				this._originalTarget = specifiedTarget
+			} else {
+				this.target = specifiedTarget
+			}
+		} else {
+			this.target = document.createElement(options.tagName || 'div')
+			this._autoCreatedTarget = true
+		}
+	}
+
+	/** Create VNode */
+	private _createVM(
+		component: Component,
+		{ props, children, app, parent, listeners, on, slots }: Options = {},
+	): VNode | typeof Vue2 {
 		const mergedListeners = { ...listeners, ...on }
 
 		if (isVue2) {
-			const VueConstructor = Vue2.extend(Object.assign({}, context || {}, component))
-
-			vNode = new VueConstructor({
-				parent,
-				propsData: props,
-			}) as typeof Vue2
-			;(vNode as any).id = `mount-plugin-${this.seed++}`
-
-			// Vue 2 事件监听
-			if (Object.keys(mergedListeners).length > 0) {
-				Object.entries(mergedListeners).forEach(([event, handler]) => {
-					;(vNode as any).$on(event, handler)
-				})
-			}
-
-			return vNode
-		} else {
-			// Vue 3
-			// 合并 props 和事件监听器
-			const mergedProps = {
-				...props,
-				...Object.fromEntries(
-					Object.entries(mergedListeners).map(([event, handler]) => [`on${event}`, handler]),
-				),
-			}
-
-			// 处理 slots
-			const mergedChildren = slots ? Object.assign({}, slots, children ? { default: children } : {}) : children
-
-			vNode = createVNode(component, mergedProps, mergedChildren, patchFlag, dynamicProps, isBlockNode)
-
-			// 设置上下文
-			if (app?._context) {
-				;(vNode as VNode).appContext = app._context
-			}
-
-			return vNode
+			return this._createVue2VM(component, props, parent, mergedListeners)
 		}
+
+		return this._createVue3VNode(component, props, children, app, slots, mergedListeners)
 	}
 
-	/**
-	 * 挂载组件 / Mount the component
-	 */
-	mount(): this {
-		// 触发 onBeforeMount
-		this.options.onBeforeMount?.(this)
+	/** Create Vue 2 component instance */
+	private _createVue2VM(
+		component: Component,
+		props: Data | null | undefined,
+		parent: unknown,
+		mergedListeners: Listeners,
+	): typeof Vue2 {
+		const VueConstructor = Vue2 as any
+		const componentAny = component as any
 
-		// 如果没有指定 target，添加到 body
-		if (!this.options.target) {
-			document.body.appendChild(this.target)
+		// Get component options
+		let componentOptions = componentAny
+
+		if (typeof componentAny === 'function' && componentAny.cid !== undefined) {
+			componentOptions = componentAny
+		} else if (componentAny.options) {
+			componentOptions = componentAny.options
 		}
+
+		// Create component constructor
+		const ComponentConstructor = VueConstructor.extend(componentOptions)
+		const instance = new ComponentConstructor({
+			propsData: props || {},
+			parent: parent as any,
+		})
+
+		// Bind event listeners
+		if (mergedListeners) {
+			Object.entries(mergedListeners).forEach(([event, handler]) => {
+				instance.$on(event, handler)
+			})
+		}
+
+		;(instance as any).id = `mount-plugin-${this.seed++}`
+
+		return instance as typeof Vue2
+	}
+
+	/** Create Vue 3 VNode */
+	private _createVue3VNode(
+		component: Component,
+		props: Data | null | undefined,
+		children: unknown,
+		app: App | undefined,
+		slots: Slots | undefined,
+		mergedListeners: Listeners,
+	): VNode {
+		// Merge props and event listeners (close -> onClose)
+		const mergedProps = {
+			...props,
+			...Object.fromEntries(
+				Object.entries(mergedListeners).map(([event, handler]) => [
+					`on${capitalize(event)}`,
+					handler,
+				]),
+			),
+		}
+
+		// Handle slots
+		const mergedChildren = slots ? { ...slots, ...(children ? { default: children } : {}) } : children
+
+		const vNode = h(component as any, mergedProps, mergedChildren as any)
+
+		// Set app context
+		if (app?._context) {
+			;(vNode as VNode).appContext = app._context
+		}
+
+		return vNode
+	}
+
+	// ==================== Public Methods ====================
+
+	/** Mount the component */
+	mount(): this {
+		// Recreate VNode if options were updated via chained API
+		if (this.options.props || this.options.listeners || this.options.on || this.options.slots) {
+			this.vNode = this._createVM(this._component, this.options)
+		}
+
+		this.options.onBeforeMount?.(this)
+		this._appendTargetToDOM()
 
 		if (isVue2) {
-			this.vNode && this.vNode.$mount(this.target)
-			this.componentInstance = this.vNode as unknown as ComponentPublicInstance
+			this._mountVue2()
 		} else {
-			render(this.vNode, this.target)
-			// 获取组件实例
-			this.componentInstance = (this.vNode as VNode).component?.proxy ?? null
+			this._mountVue3()
 		}
 
-		// 设置 ref
 		if (this.options.ref) {
 			this.options.ref.value = this.componentInstance
 		}
 
-		// 触发 onMounted
 		this.options.onMounted?.(this)
 
 		return this
 	}
 
-	/**
-	 * 卸载组件 / Unmount the component
-	 */
+	/** Append target element to DOM */
+	private _appendTargetToDOM(): void {
+		if (!this.options.target) {
+			document.body.appendChild(this.target)
+		} else if (isVue2 && this._originalTarget) {
+			if (!this._originalTarget.contains(this.target)) {
+				this._originalTarget.appendChild(this.target)
+			}
+		}
+	}
+
+	/** Mount for Vue 2 */
+	private _mountVue2(): void {
+		const vm = this.vNode as any
+
+		vm?.$mount(this.target)
+
+		// Update target to the actual $el after mount
+		// Vue 2 $mount replaces the target element with component's $el
+		if (vm?.$el) {
+			this.target = vm.$el
+		}
+
+		this.componentInstance = vm as ComponentPublicInstance
+	}
+
+	/** Mount for Vue 3 */
+	private _mountVue3(): void {
+		const renderFn = getRender()
+
+		if (renderFn) {
+			renderFn(this.vNode as VNode, this.target)
+		} else {
+			// eslint-disable-next-line no-new-func
+			const dynamicImport = new Function('module', 'return import(module)')
+
+			dynamicImport('vue').then((vue: any) => {
+				cachedRender = vue.render
+				if (cachedRender) {
+					cachedRender(this.vNode as VNode, this.target)
+				}
+			})
+		}
+
+		this.componentInstance = (this.vNode as VNode).component?.proxy ?? null
+	}
+
+	/** Unmount the component */
 	unmount(): void {
-		// 触发 onBeforeUnmount
 		this.options.onBeforeUnmount?.(this)
 
-		// 清除 ref
 		if (this.options.ref) {
 			this.options.ref.value = null
 		}
 
 		if (isVue2) {
-			this.vNode?.$destroy()
-			if (this.vNode?.$el && document.body.contains(this.vNode.$el)) {
-				document.body.removeChild(this.vNode.$el)
-			}
+			this._unmountVue2()
 		} else {
-			render(null, this.target)
-			if (document.body.contains(this.target)) {
-				document.body.removeChild(this.target)
-			}
+			this._unmountVue3()
 		}
 
 		this.vNode = null
 		this.target = null as unknown as Element | ShadowRoot
 		this.componentInstance = null
-
-		// 从实例管理中移除
 		instances.delete(this)
 
-		// 触发 onUnmounted
 		this.options.onUnmounted?.(this)
 	}
 
-	/**
-	 * 卸载组件（别名）/ Unmount the component (alias)
-	 */
+	/** Unmount for Vue 2 */
+	private _unmountVue2(): void {
+		const vm = this.vNode as any
+
+		vm?.$destroy()
+
+		if (this._autoCreatedTarget && this.target && this.target.parentNode) {
+			this.target.parentNode.removeChild(this.target)
+		}
+	}
+
+	/** Unmount for Vue 3 */
+	private _unmountVue3(): void {
+		const renderFn = getRender()
+
+		if (renderFn) {
+			renderFn(null, this.target)
+		}
+
+		if (this._autoCreatedTarget && document.body.contains(this.target)) {
+			document.body.removeChild(this.target)
+		}
+	}
+
+	/** Unmount the component (alias) */
 	destroy = this.unmount
 
-	/**
-	 * 卸载组件（别名）/ Unmount the component (alias)
-	 */
+	/** Unmount the component (alias) */
 	remove = this.unmount
 
-	// ========== 链式调用 API ==========
+	// ==================== Chained API ====================
 
-	/**
-	 * 设置 props / Set props
-	 */
+	/** Set props */
 	setProps(props: Data): this {
 		this.options = { ...this.options, props: { ...this.options.props, ...props } }
 
 		return this
 	}
 
-	/**
-	 * 设置事件监听器 / Set event listeners
-	 */
+	/** Set event listeners */
 	setListeners(listeners: Listeners): this {
 		this.options = { ...this.options, listeners: { ...this.options.listeners, ...listeners } }
 
 		return this
 	}
 
-	/**
-	 * 设置事件监听器（别名）/ Set event listeners (alias)
-	 */
+	/** Set event listeners (alias) */
 	on = this.setListeners
 
-	/**
-	 * 设置插槽 / Set slots
-	 */
+	/** Set slots */
 	setSlots(slots: Slots): this {
 		this.options = { ...this.options, slots: { ...this.options.slots, ...slots } }
 
 		return this
 	}
 
-	/**
-	 * 设置目标 / Set target
-	 */
+	/** Set target */
 	setTarget(target: Element | ShadowRoot | string): this {
 		this.options = { ...this.options, target }
+		const specifiedTarget = resolveTarget(target)
+
+		if (specifiedTarget) {
+			if (isVue2) {
+				const wrapper = document.createElement('div')
+
+				wrapper.setAttribute('data-mount-wrapper', String(this.id))
+				this.target = wrapper
+				this._autoCreatedTarget = true
+				this._originalTarget = specifiedTarget
+			} else {
+				this.target = specifiedTarget
+				this._autoCreatedTarget = false
+			}
+		}
 
 		return this
 	}
 
-	/**
-	 * 设置生命周期钩子 / Set lifecycle hooks
-	 */
+	/** Set lifecycle hooks */
 	setHooks(hooks: MountHooks): this {
 		this.options = { ...this.options, ...hooks }
 
 		return this
 	}
 
-	// ========== 静态方法 ==========
+	// ==================== Static Methods ====================
 
-	/**
-	 * 获取所有活动实例 / Get all active instances
-	 */
+	/** Get all active instances */
 	static get instances(): Mount[] {
 		return Array.from(instances)
 	}
 
-	/**
-	 * 卸载所有实例 / Unmount all instances
-	 */
+	/** Unmount all instances */
 	static unmountAll(): void {
 		instances.forEach(instance => instance.unmount())
 	}
 
-	/**
-	 * 卸载所有实例（别名）/ Unmount all instances (alias)
-	 */
+	/** Unmount all instances (alias) */
 	static destroyAll = Mount.unmountAll
 
-	/**
-	 * 根据 ID 获取实例 / Get instance by ID
-	 */
+	/** Get instance by ID */
 	static getById(id: number): Mount | undefined {
 		return Array.from(instances).find(instance => instance.id === id)
 	}

@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.0.0] - 2025-03-16
+## [4.0.0] - 2025-03-18
 
 ### Added
 
@@ -31,12 +31,17 @@ All notable changes to this project will be documented in this file.
   - TypeScript 5.0.x → 5.9.x
   - Vitest (new) replacing Jest
   - All rollup plugins updated to latest
+- **Code Refactoring**: Improved Vue 2 compatibility with wrapper element pattern
 
 ### Fixed
 
 - IIFE build now correctly keeps `vue/vue-demi` as external dependencies (reduced from 240KB to 7KB)
 - TypeScript plugin warning about temporary config files
 - `mount()` method now returns `this` for potential chaining
+- Vue 2 `$mount` no longer replaces target element when using `setTarget()`
+- Vue 2 unmount now correctly removes wrapper element
+- Vue 2 re-mount after unmount now works correctly
+- Import `createVNode` and `render` from `vue-demi` now works in both Vue 2 and Vue 3
 
 ### Breaking Changes
 
