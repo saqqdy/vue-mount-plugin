@@ -2,50 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.0.0] - 2025-03-18
+## [4.0.0] - 2025-03-21
 
 ### Added
 
+- **Functional API**: New `mount()` and `createMount()` functions replace class-based API
+- **useMount Composable**: Vue 3 Composition API support with auto cleanup
+- **Singleton Mode**: `singleton` option for single instance per component/key
+- **Promise Support**: `await` mount instance for async result handling
+- **Event System**: `on()`, `off()`, `emit()` methods for event handling
+- **hide() Method**: Hide component without destroying instance
+- **Context Inheritance**: `app` option for Vue 3 context (router, pinia, i18n)
+- **Global Configuration**: `setGlobalConfig()` and `globalConfig` for defaults
+- **Instance Management**: `getInstances()`, `getInstanceById()`, `unmountAll()`, `isMounted()`
+- **TypeScript Support**: Full TypeScript types and generics
 - **Lifecycle Hooks**: `onBeforeMount`, `onMounted`, `onBeforeUnmount`, `onUnmounted` callbacks
-- **Event Listeners**: `listeners` and `on` options for component event handling
-- **Slots Support**: `slots` option to pass slot content to components
-- **Ref Support**: `ref` option to get component instance reference
-- **KeepAlive Options**: `keepAlive` option interface for component caching
-- **Async Components**: Support for async components via function constructor
-- **Method Aliases**: `destroy()` and `remove()` as aliases for `unmount()`
-- **Chained API**: `setProps()`, `setListeners()`, `on()`, `setSlots()`, `setTarget()`, `setHooks()` methods
-- **Instance Management**: Static `instances` getter, `unmountAll()`, `destroyAll()`, `getById()` methods
-- **TypeScript Generics**: `Options<TContext>` with generic context type
-- ESM module support (`"type": "module"` in package.json)
-- ES5 build output (`dist/index.es5.js`, `dist/index.es5.min.js`) for legacy browser support
-- `build:es5` script for ES5 compatible builds
-- Comprehensive test coverage (86%+) with Vitest and jsdom
+- **Slots Support**: `slots` option and `setSlots()` method
+- **Chained API**: All setters return `this` for chaining
+- ES5 build output for legacy browser support
 
 ### Changed
 
-- **Build System**: Migrate build scripts to use `tsx` instead of `rollup -c` with typescript plugin
-- **Testing**: Migrate from Jest to Vitest with 73 test cases
-- **Linting**: Migrate from `.eslintrc.js` to `eslint.config.mjs` (ESLint 9 flat config)
-- **Dependencies**: Major version upgrades:
-  - ESLint 8.x → 9.x
-  - TypeScript 5.0.x → 5.9.x
-  - Vitest (new) replacing Jest
-  - All rollup plugins updated to latest
-- **Code Refactoring**: Improved Vue 2 compatibility with wrapper element pattern
+- **API Modernization**: Replaced class-based `new Mount()` with functional API
+- **Build System**: Migrated to tsdown for faster builds
+- **Testing**: Migrated from Jest to Vitest with 43+ test cases
+- **Linting**: Migrated to ESLint 9 flat config
+- **Code Refactoring**: Improved Vue 2/3 compatibility with shared base class
 
 ### Fixed
 
-- IIFE build now correctly keeps `vue/vue-demi` as external dependencies (reduced from 240KB to 7KB)
-- TypeScript plugin warning about temporary config files
-- `mount()` method now returns `this` for potential chaining
-- Vue 2 `$mount` no longer replaces target element when using `setTarget()`
-- Vue 2 unmount now correctly removes wrapper element
-- Vue 2 re-mount after unmount now works correctly
-- Import `createVNode` and `render` from `vue-demi` now works in both Vue 2 and Vue 3
+- IIFE build correctly keeps vue/vue-demi as external dependencies
+- Vue 2 context inheritance (router, store, i18n)
+- Vue 3 context inheritance via app option
+- Memory leaks with proper cleanup on unmount
+- Event emitter cleanup on unmount
 
 ### Breaking Changes
 
-- Minimum Node.js version: `>=12.20` → `>=14.14.0`
+- API change: `new Mount()` → `mount()` / `createMount()`
+- Minimum Node.js version: `>=14.14.0`
 - Build output file names changed:
 
   | Old | New |
@@ -54,8 +49,6 @@ All notable changes to this project will be documented in this file.
   | `dist/index.esm-browser.prod.js` | `dist/index.iife.min.js` |
   | `dist/index.esm-bundler.js` | `dist/index.mjs` |
   | `dist/index.cjs.js` | `dist/index.cjs` |
-  | `dist/index.global.js` | removed |
-  | `dist/index.global.prod.js` | removed |
 
 ## [3.1.0] - 2023-05-23
 
