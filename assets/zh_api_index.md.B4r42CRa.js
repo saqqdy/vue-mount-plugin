@@ -1,0 +1,36 @@
+import{_ as a,o as t,c as n,ag as i}from"./chunks/framework.BZohXCq9.js";const k=JSON.parse('{"title":"API 参考","description":"","frontmatter":{},"headers":[],"relativePath":"zh/api/index.md","filePath":"zh/api/index.md"}'),e={name:"zh/api/index.md"};function l(d,s,h,p,r,o){return t(),n("div",null,[...s[0]||(s[0]=[i(`<h1 id="api-参考" tabindex="-1">API 参考 <a class="header-anchor" href="#api-参考" aria-label="Permalink to &quot;API 参考&quot;">​</a></h1><p>欢迎使用 vue-mount-plugin API 参考。本节提供所有导出函数、类型和接口的详细文档。</p><h2 id="概览" tabindex="-1">概览 <a class="header-anchor" href="#概览" aria-label="Permalink to &quot;概览&quot;">​</a></h2><p>vue-mount-plugin 导出以下内容：</p><h3 id="核心函数" tabindex="-1">核心函数 <a class="header-anchor" href="#核心函数" aria-label="Permalink to &quot;核心函数&quot;">​</a></h3><table tabindex="0"><thead><tr><th>函数</th><th>描述</th></tr></thead><tbody><tr><td><a href="/zh/api/mount.html"><code>mount()</code></a></td><td>创建并立即显示组件</td></tr><tr><td><a href="/zh/api/createMount.html"><code>createMount()</code></a></td><td>创建实例但不显示</td></tr></tbody></table><h3 id="实例管理" tabindex="-1">实例管理 <a class="header-anchor" href="#实例管理" aria-label="Permalink to &quot;实例管理&quot;">​</a></h3><table tabindex="0"><thead><tr><th>函数</th><th>描述</th></tr></thead><tbody><tr><td><code>getInstances()</code></td><td>获取所有活动实例</td></tr><tr><td><code>getInstanceById()</code></td><td>通过 ID 获取实例</td></tr><tr><td><code>unmountAll()</code></td><td>卸载所有实例</td></tr><tr><td><code>isMounted()</code></td><td>检查实例是否已挂载</td></tr><tr><td><code>getActiveInstanceIds()</code></td><td>获取所有活动实例 ID</td></tr></tbody></table><h3 id="单例管理" tabindex="-1">单例管理 <a class="header-anchor" href="#单例管理" aria-label="Permalink to &quot;单例管理&quot;">​</a></h3><table tabindex="0"><thead><tr><th>函数</th><th>描述</th></tr></thead><tbody><tr><td><code>getSingleton()</code></td><td>通过键获取单例实例</td></tr><tr><td><code>setSingleton()</code></td><td>设置单例实例</td></tr><tr><td><code>hasSingleton()</code></td><td>检查单例是否存在</td></tr><tr><td><code>removeSingleton()</code></td><td>通过键移除单例</td></tr><tr><td><code>clearSingletons()</code></td><td>清除所有单例</td></tr></tbody></table><h3 id="配置" tabindex="-1">配置 <a class="header-anchor" href="#配置" aria-label="Permalink to &quot;配置&quot;">​</a></h3><table tabindex="0"><thead><tr><th>函数</th><th>描述</th></tr></thead><tbody><tr><td><code>setGlobalConfig()</code></td><td>设置全局配置</td></tr><tr><td><code>globalConfig</code></td><td>全局配置对象</td></tr></tbody></table><h3 id="组合式函数" tabindex="-1">组合式函数 <a class="header-anchor" href="#组合式函数" aria-label="Permalink to &quot;组合式函数&quot;">​</a></h3><table tabindex="0"><thead><tr><th>函数</th><th>描述</th></tr></thead><tbody><tr><td><code>useMount()</code></td><td>Vue 3 实例管理组合式函数</td></tr><tr><td><code>useSingleton()</code></td><td>Vue 3 单例管理组合式函数</td></tr></tbody></table><h3 id="插件" tabindex="-1">插件 <a class="header-anchor" href="#插件" aria-label="Permalink to &quot;插件&quot;">​</a></h3><table tabindex="0"><thead><tr><th>导出</th><th>描述</th></tr></thead><tbody><tr><td><code>MountPlugin</code></td><td>Vue 插件，提供 <code>$show</code> 方法</td></tr></tbody></table><h2 id="快速参考" tabindex="-1">快速参考 <a class="header-anchor" href="#快速参考" aria-label="Permalink to &quot;快速参考&quot;">​</a></h2><div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 核心</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mount,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  createMount,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 实例管理</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  getInstances,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  getInstanceById,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  unmountAll,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  isMounted,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  getActiveInstanceIds,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 单例</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  getSingleton,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  setSingleton,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  hasSingleton,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  removeSingleton,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  clearSingletons,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 配置</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  setGlobalConfig,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  globalConfig,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 组合式函数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  useMount,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  useSingleton,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 插件</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  MountPlugin,</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // 类型</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> MountInstance,</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> MountOptions,</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> LifecycleHooks,</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> GlobalConfig,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &#39;vue-mount-plugin&#39;</span></span></code></pre></div>`,18)])])}const E=a(e,[["render",l]]);export{k as __pageData,E as default};
