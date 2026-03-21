@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+	base: '/vue-mount-plugin/',
 	title: 'vue-mount-plugin',
 	description: 'A simple and easy to use Vue instance extension plugin that supports Vue 2.0 and Vue 3.0',
 	lang: 'en-US',
