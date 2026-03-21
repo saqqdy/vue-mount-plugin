@@ -1,0 +1,62 @@
+/* Custom theme colors - Indigo/Violet */
+:root {
+  --vp-c-brand-1: #6366f1;
+  --vp-c-brand-2: #7c3aed;
+  --vp-c-brand-3: #8b5cf6;
+  --vp-c-brand-soft: rgba(99, 102, 241, 0.14);
+
+  /* Accent colors */
+  --vp-c-brand-1-dark: #818cf8;
+  --vp-c-brand-2-dark: #a78bfa;
+  --vp-c-brand-3-dark: #c4b5fd;
+
+  /* Button */
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #fff;
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+
+  /* Sponsor button */
+  --vp-button-sponsor-border: var(--vp-c-brand-1);
+  --vp-button-sponsor-text: var(--vp-c-brand-1);
+  --vp-button-sponsor-bg: transparent;
+  --vp-button-sponsor-hover-border: var(--vp-c-brand-2);
+  --vp-button-sponsor-hover-text: var(--vp-c-brand-2);
+  --vp-button-sponsor-hover-bg: transparent;
+
+  /* Home hero */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, #8b5cf6 50%, #6366f1 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+.dark {
+  --vp-c-brand-1: #a5b4fc;
+  --vp-c-brand-2: #818cf8;
+  --vp-c-brand-3: #6366f1;
+  --vp-c-brand-soft: rgba(165, 180, 252, 0.14);
+
+  --vp-home-hero-name-background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 50%, #6366f1 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, #a5b4fc 50%, #818cf8 50%);
+}
+
+/* Link hover color */
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* Sidebar active link */
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Nav link active */
+.VPNavBarMenuLink.active .text {
+  color: var(--vp-c-brand-1);
+}

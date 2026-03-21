@@ -1,19 +1,25 @@
 .DS_Store
 .idea/
-coverage
 node_modules/
+coverage/
 dist/
 es/
 lib/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
 npm-debug.log
+yarn.lock
 yarn-error.log
 /test/unit/coverage/
 /test/e2e/reports/
 selenium-debug.log
 
 *.bak
-*.bak.js
 *_bak
+*.bak.js
+*.bak.mjs
+*.bak.cjs
+temp
 stats.html
 
 # Editor directories and files
