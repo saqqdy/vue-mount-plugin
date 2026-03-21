@@ -119,6 +119,21 @@ export default {
 </script>
 ```
 
+### IE11 Support
+
+For IE11 compatibility, use the ES5 build:
+
+```html
+<head>
+  <!-- Import vue2 (Vue 3 does not support IE11) -->
+  <script src="//unpkg.com/vue@2"></script>
+  <!-- Import ES5 build for IE11 -->
+  <script src="//unpkg.com/vue-mount-plugin@4/dist/index.es5.min.js"></script>
+</head>
+```
+
+> **Note:** Vue 3 does not support IE11. Use Vue 2 with the ES5 build for IE11 compatibility.
+
 ## API
 
 ### Core Functions
@@ -661,8 +676,20 @@ For large projects, you can use this regex replacement guide:
 | `index.cjs` | CJS | CommonJS for Node.js |
 | `index.iife.js` | IIFE | Browser build |
 | `index.iife.min.js` | IIFE | Browser build (minified) |
-| `index.es5.js` | UMD | ES5 compatible build |
-| `index.es5.min.js` | UMD | ES5 compatible build (minified) |
+| `index.es5.js` | UMD | ES5 compatible build (IE11 support) |
+| `index.es5.min.js` | UMD | ES5 compatible build (minified, IE11 support) |
+
+## Browser Support
+
+| Browser | Support |
+|---------|---------|
+| Chrome | ✅ Latest |
+| Firefox | ✅ Latest |
+| Safari | ✅ Latest |
+| Edge | ✅ Latest |
+| IE 11 | ✅ Use ES5 build (`index.es5.min.js`) |
+
+> For IE11, use Vue 2 and the ES5 build. Vue 3 does not support IE11.
 
 ## Support & Issues
 

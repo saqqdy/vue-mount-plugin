@@ -119,6 +119,21 @@ export default {
 </script>
 ```
 
+### IE11 支持
+
+如需 IE11 兼容，请使用 ES5 构建版本：
+
+```html
+<head>
+  <!-- 引入 vue2（Vue 3 不支持 IE11） -->
+  <script src="//unpkg.com/vue@2"></script>
+  <!-- 引入 ES5 构建版本以支持 IE11 -->
+  <script src="//unpkg.com/vue-mount-plugin@4/dist/index.es5.min.js"></script>
+</head>
+```
+
+> **注意：** Vue 3 不支持 IE11。请使用 Vue 2 配合 ES5 构建版本以支持 IE11。
+
 ## API
 
 ### 核心函数
@@ -661,8 +676,20 @@ mount(Modal) // zIndex: 2000
 | `index.cjs` | CJS | 适用于 Node.js 的 CommonJS |
 | `index.iife.js` | IIFE | 浏览器版本 |
 | `index.iife.min.js` | IIFE | 浏览器版本（压缩） |
-| `index.es5.js` | UMD | ES5 兼容版本 |
-| `index.es5.min.js` | UMD | ES5 兼容版本（压缩） |
+| `index.es5.js` | UMD | ES5 兼容版本（支持 IE11） |
+| `index.es5.min.js` | UMD | ES5 兼容版本（压缩，支持 IE11） |
+
+## 浏览器支持
+
+| 浏览器 | 支持情况 |
+|--------|----------|
+| Chrome | ✅ 最新版 |
+| Firefox | ✅ 最新版 |
+| Safari | ✅ 最新版 |
+| Edge | ✅ 最新版 |
+| IE 11 | ✅ 使用 ES5 构建（`index.es5.min.js`） |
+
+> IE11 支持需要使用 Vue 2 和 ES5 构建版本。Vue 3 不支持 IE11。
 
 ## 支持与问题
 
