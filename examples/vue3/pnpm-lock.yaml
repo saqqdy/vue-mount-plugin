@@ -18,8 +18,8 @@ importers:
         specifier: ^9.14.0
         version: 9.14.5(vue@3.5.30(typescript@5.9.3))
       vue-mount-plugin:
-        specifier: 4.0.0-beta.6
-        version: 4.0.0-beta.6(js-cool@5.23.2)(vue@3.5.30(typescript@5.9.3))
+        specifier: 4.0.0
+        version: 4.0.0(js-cool@5.23.2)(vue@3.5.30(typescript@5.9.3))
       vue-router:
         specifier: ^4.4.0
         version: 4.6.4(vue@3.5.30(typescript@5.9.3))
@@ -634,8 +634,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-mount-plugin@4.0.0-beta.6:
-    resolution: {integrity: sha512-j38dhK5/Wq8hq74MXLaU6wOx8H4HhL/OwvVBNLKDrE4tGW7E2blc7rO8Fifb9r9rysC4wb/UOdEKT4Vrih9oYQ==}
+  vue-mount-plugin@4.0.0:
+    resolution: {integrity: sha512-kPWcOfOF2ITlaWa5BA94Pii1B7Um9juVTkMFDhNB/sbunH3A8J7KwvjPJL2yQ+sRHuL/G/UvhDT9RgM12x6GYw==}
     engines: {node: '>=14.14.0'}
     peerDependencies:
       '@vue/composition-api': '>=1.0.0'
@@ -1137,7 +1137,7 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.30(typescript@5.9.3)
 
-  vue-mount-plugin@4.0.0-beta.6(js-cool@5.23.2)(vue@3.5.30(typescript@5.9.3)):
+  vue-mount-plugin@4.0.0(js-cool@5.23.2)(vue@3.5.30(typescript@5.9.3)):
     dependencies:
       js-cool: 5.23.2
       tslib: 2.8.1

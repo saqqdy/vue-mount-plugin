@@ -10,7 +10,7 @@
 	"dependencies": {
 		"vue": "^2.7.14",
 		"vue-i18n": "^8.28.2",
-		"vue-mount-plugin": "4.0.0-beta.6",
+		"vue-mount-plugin": "4.0.0",
 		"vue-router": "^3.6.5",
 		"vuex": "^3.6.2"
 	},
