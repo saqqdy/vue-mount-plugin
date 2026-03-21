@@ -30,7 +30,7 @@
 		"build:bundle": "tsx scripts/build",
 		"build:es5": "cross-env BABEL_ENV=es5 pnpm build:bundle",
 		"build:types": "tsc -p src/tsconfig.json && pnpm roll-types",
-		"build:docs": "vitepress build docs",
+		"docs:build": "vitepress build docs",
 		"docs:dev": "vitepress dev docs",
 		"docs:preview": "vitepress preview docs",
 		"deploy": "sh scripts/deploy.sh",
